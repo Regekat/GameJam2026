@@ -57,10 +57,10 @@ MonoBehaviour:
     m_Value: {x: 0, y: 0}
   grilleOpacity:
     m_OverrideState: 1
-    m_Value: 0.2
+    m_Value: 0.1
   grilleCounterOpacity:
     m_OverrideState: 1
-    m_Value: 0.3
+    m_Value: 0.2
   grilleResolution:
     m_OverrideState: 1
     m_Value: 640
@@ -386,7 +386,7 @@ MonoBehaviour:
     m_Value: 256
   colorPrecision:
     m_OverrideState: 1
-    m_Value: 16
+    m_Value: 64
 --- !u!114 &-2631082568392965279
 MonoBehaviour:
   m_ObjectHideFlags: 3
