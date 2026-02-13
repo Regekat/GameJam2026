@@ -22,7 +22,7 @@ public class CartMovement : MonoBehaviour
 
     void Update()
     {
-        //Get Keyboard Input + Sync Camera's direction to Ball's movement
+        //Get Keyboard Input
         GetInput();
     }
 
@@ -46,18 +46,17 @@ public class CartMovement : MonoBehaviour
         if (kb.aKey.isPressed) horizontal -= 1f;
         if (kb.dKey.isPressed) horizontal += 1f;
 
-        //Call on Unity's "forward" and "right" vector variables
-        Vector3 forward = cameraTransform.forward;
-        Vector3 right = cameraTransform.right;
+        Vector3 forward = transform.forward;
+        Vector3 right = transform.right;
 
-        //Flatten Y-Axis so that if the player points the camera at the sky, the ball won't fly away
+        /*Flatten Y-Axis so that the ball won't fly away
         forward.y = 0f;
         right.y = 0f;
         forward.Normalize();
         right.Normalize();
 
-        //Calculate the final direction the ball will move in via input
-        moveDirection = (forward * vertical + right * horizontal).normalized;
+        //Calculate the final direction the ball will move in via input*/
+        moveDirection = (forward * vertical + right * horizontal);
     }
     void MoveCart()
     {
