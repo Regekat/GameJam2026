@@ -299,6 +299,17 @@
                 },
                 {
                     "name": "",
+                    "id": "66f72f7d-9915-40d7-b7a3-095f2b3a68b7",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Brake",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "a340b63f-a5fd-49a4-aad6-cebba8aa0f84",
                     "path": "<Pointer>/delta",
                     "interactions": "",
@@ -360,17 +371,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "DownShift",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ef150ded-e68b-4add-8bdc-4a71b00b364a",
-                    "path": "<Keyboard>/shift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "UpShift",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
