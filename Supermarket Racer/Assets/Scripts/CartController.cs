@@ -68,6 +68,8 @@ namespace Ezereal
         void OnAccelerate(InputValue value)
         {
             moveInput = value.Get<float>();
+            moveInput = value.Get<float>();
+            Debug.Log($"Accelerate value: {moveInput}");
         }
 
         void OnBrake(InputValue value)

@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "Ezereal Car Controller",
     "maps": [
         {
@@ -27,7 +28,7 @@
                     "name": "Accelerate",
                     "type": "Value",
                     "id": "f34630ff-e16d-4903-9335-fa0e02a81cb0",
-                    "expectedControlType": "",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -221,17 +222,6 @@
                 },
                 {
                     "name": "",
-                    "id": "60ab877d-ff46-4396-bc37-0c969e225fdc",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Accelerate",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "4c074dbb-4d7c-402b-b013-fe368701931b",
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",
@@ -253,15 +243,37 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "99b890fc-de48-4617-a0f1-8ecbe1ccf788",
-                    "path": "<Keyboard>/s",
+                    "name": "1D Axis",
+                    "id": "11159ef2-2702-47cd-817a-3ea29bec68bf",
+                    "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Brake",
-                    "isComposite": false,
+                    "action": "Accelerate",
+                    "isComposite": true,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "71f5c38a-b30a-4802-a92d-0881fd811edf",
+                    "path": "<Keyboard>/#(S)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Accelerate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "d47592e6-d96f-4a73-aeb9-04517306c988",
+                    "path": "<Keyboard>/#(W)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Accelerate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
