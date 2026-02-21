@@ -111,8 +111,8 @@ MonoBehaviour:
   isEnabled: 1
   scanlinesWeight: 0.1
   noiseWeight: 0.1
-  screenBendX: 3
-  screenBendY: 3
+  screenBendX: 10
+  screenBendY: 10
   vignetteAmount: 0.98
   vignetteSize: 0
   vignetteRounding: 5.26
@@ -120,8 +120,8 @@ MonoBehaviour:
   scanLinesDensity: 200
   scanLinesSpeed: -10
   noiseAmount: 250
-  chromaticRed: {x: 0.002, y: -0.002}
-  chromaticGreen: {x: -0.002, y: 0.002}
+  chromaticRed: {x: 0.001, y: -0.001}
+  chromaticGreen: {x: -0.001, y: 0.001}
   chromaticBlue: {x: 0, y: 0}
   grilleOpacity: 0.1
   grilleCounterOpacity: 0.2
