@@ -9,10 +9,10 @@ public class ObjectiveManager : MonoBehaviour
     [Header("Item Pools")]
     public List<string> possibleItems = new List<string>();
     public int numberToPick = 3;
+    public int maxQuantityPerItem = 3;
 
-    [Header("Runtime Data")]
-    public List<string> requiredItems = new List<string>();
-    private List<string> collectedItems = new List<string>();
+    private Dictionary<string, int> requiredItems = new Dictionary<string, int>();
+    private Dictionary<string, int> collectedItems = new Dictionary<string, int>();
 
     [Header("UI")]
     [SerializeField] private TMP_Text groceryListText;
@@ -33,42 +33,49 @@ public class ObjectiveManager : MonoBehaviour
         requiredItems.Clear();
         collectedItems.Clear();
 
-        if (possibleItems.Count == 0)
-        {
-            Debug.LogWarning("No possible items assigned!");
-            return;
-        }
-
-        int safePickAmount = Mathf.Min(numberToPick, possibleItems.Count);
-
         List<string> tempPool = new List<string>(possibleItems);
+        int safePickAmount = Mathf.Min(numberToPick, tempPool.Count);
 
         for (int i = 0; i < safePickAmount; i++)
         {
             int randomIndex = Random.Range(0, tempPool.Count);
-            requiredItems.Add(tempPool[randomIndex]);
-            tempPool.RemoveAt(randomIndex); // prevents duplicates
+            string item = tempPool[randomIndex];
+            tempPool.RemoveAt(randomIndex);
+
+            int quantity = Random.Range(1, maxQuantityPerItem + 1);
+
+            requiredItems[item] = quantity;
+            collectedItems[item] = 0;
         }
 
-        Debug.Log("Generated Grocery List:");
-        foreach (var item in requiredItems)
-        {
-            Debug.Log(item);
-        }
+        UpdateUI();
     }
 
-    public void ItemCollected(string itemID)
+    public void ItemAdded(string itemID)
     {
-        if (requiredItems.Contains(itemID) && !collectedItems.Contains(itemID))
-        {
-            collectedItems.Add(itemID);
-            UpdateUI();
-        }
+        if (!requiredItems.ContainsKey(itemID)) return;
+
+        collectedItems[itemID]++;
+        UpdateUI();
+    }
+
+    public void ItemRemoved(string itemID)
+    {
+        if (!requiredItems.ContainsKey(itemID)) return;
+
+        collectedItems[itemID] = Mathf.Max(0, collectedItems[itemID] - 1);
+        UpdateUI();
     }
 
     public bool AllItemsCollected()
     {
-        return collectedItems.Count == requiredItems.Count;
+        foreach (var pair in requiredItems)
+        {
+            if (collectedItems[pair.Key] < pair.Value)
+                return false;
+        }
+
+        return true;
     }
 
     void UpdateUI()
@@ -77,10 +84,14 @@ public class ObjectiveManager : MonoBehaviour
 
         groceryListText.text = "";
 
-        foreach (string item in requiredItems)
+        foreach (var pair in requiredItems)
         {
-            bool collected = collectedItems.Contains(item);
-            groceryListText.text += collected ? $"✔ {item}\n" : $"• {item}\n";
+            string item = pair.Key;
+            int required = pair.Value;
+            int collected = collectedItems[item];
+
+            string check = collected >= required ? "✔" : "•";
+            groceryListText.text += $"{check} {item} ({collected}/{required})\n";
         }
     }
 }

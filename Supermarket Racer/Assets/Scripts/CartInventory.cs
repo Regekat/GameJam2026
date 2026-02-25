@@ -9,14 +9,21 @@ public class CartInventory : MonoBehaviour
     {
         GroceryItem item = other.GetComponent<GroceryItem>();
 
-        if (item != null && !item.isCollected)
+        if (item != null && !itemsInCart.Contains(item))
         {
-            item.isCollected = true;
             itemsInCart.Add(item);
+            ObjectiveManager.Instance.ItemAdded(item.itemID);
+        }
+    }
 
-            ObjectiveManager.Instance.ItemCollected(item.itemID);
+    private void OnTriggerExit(Collider other)
+    {
+        GroceryItem item = other.GetComponent<GroceryItem>();
 
-            Debug.Log($"Added {item.itemID} to cart");
+        if (item != null && itemsInCart.Contains(item))
+        {
+            itemsInCart.Remove(item);
+            ObjectiveManager.Instance.ItemRemoved(item.itemID);
         }
     }
 
