@@ -409,6 +409,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2713566066004189060, guid: e7195f79da41be14984be8a2803087d6, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 2137999712}
+    - target: {fileID: 2713566066004189060, guid: e7195f79da41be14984be8a2803087d6, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2998234384814170440, guid: e7195f79da41be14984be8a2803087d6, type: 3}
       propertyPath: m_Name
       value: Player Cart
@@ -2303,6 +2311,10 @@ PrefabInstance:
     - target: {fileID: 637826886479350472, guid: 8bf5761909d81a84a91f98d6988414cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2004854182003788651, guid: 8bf5761909d81a84a91f98d6988414cd, type: 3}
+      propertyPath: timeBetweenCustomers
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4667374966760986763, guid: 8bf5761909d81a84a91f98d6988414cd, type: 3}
       propertyPath: m_Name

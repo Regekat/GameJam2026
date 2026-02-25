@@ -90,8 +90,16 @@ public class ObjectiveManager : MonoBehaviour
             int required = pair.Value;
             int collected = collectedItems[item];
 
-            string check = collected >= required ? "✔" : "•";
-            groceryListText.text += $"{check} {item} ({collected}/{required})\n";
+            bool completed = collected >= required;
+
+            string line = $"{item} ({collected}/{required})";
+
+            if (completed)
+            {
+                line = $"<s>{line}</s>";
+            }
+
+            groceryListText.text += line + "\n";
         }
     }
 }
