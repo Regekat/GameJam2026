@@ -3,6 +3,7 @@ using UnityEngine;
 public class DeliveryZone : MonoBehaviour
 {
     public QueueManager QueueManager;
+    public GameStateManager GameStateManager;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -13,8 +14,11 @@ public class DeliveryZone : MonoBehaviour
             if (cart.HasAllRequiredItems())
             {
                 Debug.Log("All groceries delivered! Success!");
-                // Trigger win
-                
+
+                if (GameStateManager.Instance != null)
+                {
+                    GameStateManager.Instance.TriggerWin();
+                }
             }
             else
             {

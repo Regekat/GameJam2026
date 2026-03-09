@@ -62,16 +62,36 @@ public class QueueManager : MonoBehaviour
         {
             yield return new WaitForSeconds(timeBetweenCustomers);
 
+            if (GameStateManager.Instance != null && GameStateManager.Instance.HasGameEnded)
+            {
+                yield break;
+            }
+
             RemoveFrontCustomer();
+
+            if (GameStateManager.Instance != null && GameStateManager.Instance.HasGameEnded)
+            {
+                yield break;
+            }
+
             ShiftQueueForward();
         }
     }
 
     void RemoveFrontCustomer()
     {
+        if (queueMembers.Count == 0)
+            return;
+
         if (queueMembers[0].isMother)
         {
             Debug.Log("Game Over");
+
+            if (GameStateManager.Instance != null)
+            {
+                GameStateManager.Instance.TriggerLoss();
+            }
+
             return;
         }
 
