@@ -4,15 +4,48 @@ using UnityEngine;
 
 public class QueueManager : MonoBehaviour
 {
+    [Header("Queue Positions")]
     public List<Transform> queuePositions = new List<Transform>();
-    public List<NPCQueue> queueMembers = new List<NPCQueue>();
+
+    [Header("Prefabs")]
+    public GameObject npcPrefab;
+    public GameObject motherPrefab;
+
+    private List<NPCQueue> queueMembers = new List<NPCQueue>();
 
     public float timeBetweenCustomers = 5f;
 
     void Start()
     {
+        SpawnQueue();
         AssignInitialPositions();
         StartCoroutine(ProcessQueue());
+    }
+
+    void SpawnQueue()
+    {
+        queueMembers.Clear();
+
+        for (int i = 0; i < queuePositions.Count; i++)
+        {
+            GameObject npc;
+
+            // Last position gets mother
+            if (i == queuePositions.Count - 1)
+            {
+                npc = Instantiate(motherPrefab);
+            }
+            else
+            {
+                npc = Instantiate(npcPrefab);
+            }
+
+            NPCQueue npcQueue = npc.GetComponent<NPCQueue>();
+
+            npc.transform.position = queuePositions[i].position;
+
+            queueMembers.Add(npcQueue);
+        }
     }
 
     void AssignInitialPositions()

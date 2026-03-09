@@ -1295,6 +1295,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3141613731517351442, guid: 8bf5761909d81a84a91f98d6988414cd, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4057582226358335222, guid: 8bf5761909d81a84a91f98d6988414cd, type: 3}
+      propertyPath: m_Name
+      value: NPC_MOTHER
+      objectReference: {fileID: 0}
     - target: {fileID: 4667374966760986763, guid: 8bf5761909d81a84a91f98d6988414cd, type: 3}
       propertyPath: m_Name
       value: Check-Out Area
@@ -1309,12 +1317,12 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 4066800207118861209}
+  - {fileID: 4135957865241782170}
+  - {fileID: 8609222428973755005}
+  - {fileID: 268319067733574354}
   - {fileID: 410087041}
   - {fileID: 832575519}
-  - {fileID: 1776073542}
   - {fileID: 4459864850563057628}
-  - {fileID: 268319067733574354}
   - {fileID: 156442704}
-  - {fileID: 8609222428973755005}
-  - {fileID: 4135957865241782170}
   - {fileID: 352109190}
+  - {fileID: 1776073542}
