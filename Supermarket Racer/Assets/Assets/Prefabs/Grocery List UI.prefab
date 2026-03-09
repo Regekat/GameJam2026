@@ -116,9 +116,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectiveManager
   possibleItems:
-  - Apple
-  numberToPick: 1
-  requiredItems: []
+  - Blue Cereal
+  - Green Cereal
+  - Yellow Cereal
+  numberToPick: 3
+  maxQuantityPerItem: 5
   groceryListText: {fileID: 8027553439405156788}
 --- !u!1 &5945762727913587939
 GameObject:
@@ -154,7 +156,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -511, y: 427}
+  m_AnchoredPosition: {x: -511, y: 430}
   m_SizeDelta: {x: 711.792, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7120252484579167309
@@ -220,7 +222,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1

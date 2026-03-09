@@ -3469,6 +3469,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShoppingCart_v02
       objectReference: {fileID: 0}
+    - target: {fileID: 1921992787580210787, guid: ee1b62d1f54986347b2def0dc9f7115b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2843338046228462696, guid: ee1b62d1f54986347b2def0dc9f7115b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
