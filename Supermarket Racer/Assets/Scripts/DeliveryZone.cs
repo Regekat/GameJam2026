@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class DeliveryZone : MonoBehaviour
 {
+    public QueueManager QueueManager;
+
     private void OnTriggerEnter(Collider other)
     {
         CartInventory cart = other.GetComponent<CartInventory>();
@@ -12,6 +14,7 @@ public class DeliveryZone : MonoBehaviour
             {
                 Debug.Log("All groceries delivered! Success!");
                 // Trigger win
+                
             }
             else
             {
