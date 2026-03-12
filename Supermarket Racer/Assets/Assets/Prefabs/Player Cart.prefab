@@ -822,9 +822,9 @@ MonoBehaviour:
   currentSpeedTMP: {fileID: 0}
   accelerationSlider: {fileID: 0}
   maxSpeed: 30
-  acceleration: 100
-  brakePower: 800
-  maxSteerAngle: 15
+  acceleration: 80
+  brakePower: 400
+  maxSteerAngle: 10
   steeringSpeed: 10
   decelerationSpeed: 2
   maxSteeringWheelRotation: 360

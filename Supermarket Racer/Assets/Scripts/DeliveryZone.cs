@@ -13,7 +13,7 @@ public class DeliveryZone : MonoBehaviour
         {
             if (cart.HasAllRequiredItems())
             {
-                Debug.Log("All groceries delivered! Success!");
+                Debug.Log("[DeliveryZone] All groceries delivered");
 
                 if (GameStateManager.Instance != null)
                 {
@@ -22,7 +22,7 @@ public class DeliveryZone : MonoBehaviour
             }
             else
             {
-                Debug.Log("Missing some items!");
+                Debug.Log("[DeliveryZone] Missing some items");
             }
         }
     }

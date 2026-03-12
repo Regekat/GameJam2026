@@ -48,7 +48,7 @@ public class GameStateManager : MonoBehaviour
         }
 
         currentState = GameState.Won;
-        Debug.Log("GAME WON");
+        Debug.Log("[GameStateManager] GAME WON");
 
         HandleWin();
     }
@@ -65,18 +65,18 @@ public class GameStateManager : MonoBehaviour
         }
 
         currentState = GameState.Lost;
-        Debug.Log("GAME LOST");
+        Debug.Log("[GameStateManager] GAME LOST");
 
         HandleLoss();
     }
 
     private void HandleWin()
     {
-       //Do nothing for now. Eventually, show victory UI, disable controls
+        //Do nothing for now. Eventually, show victory UI, disable controls
     }
 
     private void HandleLoss()
     {
-       //Do nothing for now. Eventually, show game over UI, disable controls
+        //Do nothing for now. Eventually, show game over UI, disable controls
     }
 }

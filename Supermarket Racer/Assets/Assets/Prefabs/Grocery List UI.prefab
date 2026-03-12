@@ -119,6 +119,11 @@ MonoBehaviour:
   - Blue Cereal
   - Green Cereal
   - Yellow Cereal
+  - Orange
+  - Red Apple
+  - Green Apple
+  - Watermelon
+  - Eggplant
   numberToPick: 3
   maxQuantityPerItem: 5
   groceryListText: {fileID: 8027553439405156788}
