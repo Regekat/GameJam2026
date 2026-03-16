@@ -632,7 +632,7 @@ GameObject:
   - component: {fileID: 8715687673555354365}
   m_Layer: 0
   m_Name: Cube (3)
-  m_TagString: Untagged
+  m_TagString: Cart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1092,7 +1092,7 @@ GameObject:
   - component: {fileID: 281329266504828052}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Cart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1798,7 +1798,7 @@ GameObject:
   - component: {fileID: 2878109908255849669}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: Cart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2420,7 +2420,7 @@ GameObject:
   - component: {fileID: 6346680317042270856}
   m_Layer: 0
   m_Name: Cart Colliders
-  m_TagString: Untagged
+  m_TagString: Cart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2438,6 +2438,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6129531570582851513}
   - {fileID: 7274815634046253234}
   - {fileID: 1162137507668634565}
   - {fileID: 4082962429653741207}
@@ -2599,7 +2600,6 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2110326810288983468}
-  - {fileID: 6129531570582851513}
   - {fileID: 7030036118318590042}
   - {fileID: 9102785457488100367}
   m_Father: {fileID: 1896208492404112655}
@@ -3074,7 +3074,7 @@ GameObject:
   - component: {fileID: 1276901233560223697}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Cart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3186,7 +3186,7 @@ GameObject:
   - component: {fileID: 8704881849625322306}
   m_Layer: 0
   m_Name: Body Trunk Hatch
-  m_TagString: Untagged
+  m_TagString: Cart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3199,13 +3199,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8416564711640845580}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1057932, y: 0.000000038841808, z: 0.000000048090477, w: 0.99438816}
-  m_LocalPosition: {x: 0, y: 0.455, z: 2.457}
-  m_LocalScale: {x: 0.55461, y: 1.4303929, z: 0.51722}
+  m_LocalRotation: {x: -0.00015709545, y: -0, z: 0.0000000553191, w: 1}
+  m_LocalPosition: {x: 0, y: 0.44079393, z: 2.516618}
+  m_LocalScale: {x: 0.55461, y: 1.4303927, z: 0.51722}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3477469613438932220}
-  m_LocalEulerAnglesHint: {x: 12.146, y: 0, z: 0}
+  m_Father: {fileID: 6346680317042270856}
+  m_LocalEulerAnglesHint: {x: -0.018, y: 0, z: 0}
 --- !u!33 &8781538801109098905
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3283,8 +3283,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.6950204, y: 0.65830237, z: 0.105700366}
-  m_Center: {x: -1.3209305e-15, y: 0.33518615, z: 0.05285011}
+  m_Size: {x: 1.6950204, y: 0.47305763, z: 0.053274192}
+  m_Center: {x: 0.000000002029195, y: 0.33734632, z: 0.026638709}
 --- !u!1 &8601501994383401736
 GameObject:
   m_ObjectHideFlags: 0
@@ -3474,9 +3474,37 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -8504818400913238231, guid: bd799ab1c563c044bbef991492bb8815, type: 3}
+      propertyPath: m_TagString
+      value: Cart
+      objectReference: {fileID: 0}
+    - target: {fileID: -8274597032198867004, guid: bd799ab1c563c044bbef991492bb8815, type: 3}
+      propertyPath: m_TagString
+      value: Cart
+      objectReference: {fileID: 0}
+    - target: {fileID: -4302815701765576716, guid: bd799ab1c563c044bbef991492bb8815, type: 3}
+      propertyPath: m_TagString
+      value: Cart
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bd799ab1c563c044bbef991492bb8815, type: 3}
       propertyPath: m_Name
       value: ShoppingCart_v004
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bd799ab1c563c044bbef991492bb8815, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 3571439688070816537, guid: bd799ab1c563c044bbef991492bb8815, type: 3}
+      propertyPath: m_TagString
+      value: Cart
+      objectReference: {fileID: 0}
+    - target: {fileID: 8565375076658301215, guid: bd799ab1c563c044bbef991492bb8815, type: 3}
+      propertyPath: m_TagString
+      value: Cart
+      objectReference: {fileID: 0}
+    - target: {fileID: 8821294456061963822, guid: bd799ab1c563c044bbef991492bb8815, type: 3}
+      propertyPath: m_TagString
+      value: Cart
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
