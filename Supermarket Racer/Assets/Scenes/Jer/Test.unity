@@ -4117,10 +4117,6 @@ PrefabInstance:
       value: Customer_placeholder
       objectReference: {fileID: 0}
     - target: {fileID: 5879195927904085906, guid: 7dd332b1b92769746b48139fe3ab76e1, type: 3}
-      propertyPath: shelfSpots.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5879195927904085906, guid: 7dd332b1b92769746b48139fe3ab76e1, type: 3}
       propertyPath: 'shelfSpots.Array.data[0]'
       value: 
       objectReference: {fileID: 1826549099}
