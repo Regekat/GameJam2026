@@ -10,6 +10,7 @@ public class SubtleCameraTilt : MonoBehaviour
     private Quaternion originalRotation;
 
     void Start()
+    {
         originalRotation = transform.rotation;
     }
 
