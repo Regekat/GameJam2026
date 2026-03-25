@@ -10,7 +10,9 @@ using UnityEngine;
 public class GameStateManager : MonoBehaviour
 {
     public static GameStateManager Instance { get; private set; }
+
     [SerializeField] private UIFadeSystem fadeSystem;
+    [SerializeField] private UIMessageQueue messageQueue;
 
     public enum GameState
     {
@@ -75,6 +77,7 @@ public class GameStateManager : MonoBehaviour
     {
         //Do nothing for now. Eventually, show victory UI, disable controls
         fadeSystem.FadeToWhite();
+        messageQueue.PlayCheckedOut(Color.black);
 
     }
 
@@ -82,5 +85,6 @@ public class GameStateManager : MonoBehaviour
     {
         //Do nothing for now. Eventually, show game over UI, disable controls
         fadeSystem.FadeToBlack();
+        messageQueue.PlayGameOver(Color.red);
     }
 }
