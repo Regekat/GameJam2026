@@ -441,7 +441,10 @@ MonoBehaviour:
   - {fileID: 9084290161976729707}
   - {fileID: 4468418968890437468}
   - {fileID: 8642003246694538420}
-  npcPrefab: {fileID: 1035777056892794182, guid: 0094a069457fddc4bbfad9c31253d8f7, type: 3}
+  npcPrefabs:
+  - {fileID: 6919987357669797271, guid: 094694dac04099f41978a15b7f9a2302, type: 3}
+  - {fileID: 6919987357669797271, guid: 369bad820686e654f94c488fb88a287f, type: 3}
+  - {fileID: 6919987357669797271, guid: 5b123ebe22150a44594d0dd7cda4567c, type: 3}
   motherPrefab: {fileID: 3182024572359509881, guid: ebe5e53f02d28d4468057b36d12ca82f, type: 3}
   timeBetweenCustomers: 15
 --- !u!1001 &5161288905576045710

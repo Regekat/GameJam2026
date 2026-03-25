@@ -7,8 +7,10 @@ public class QueueManager : MonoBehaviour
     [Header("Queue Positions")]
     public List<Transform> queuePositions = new List<Transform>();
 
-    [Header("Prefabs")]
-    public GameObject npcPrefab;
+    [Header("NPC Variants")]
+    public List<GameObject> npcPrefabs = new List<GameObject>();
+
+    [Header("Mother")]
     public GameObject motherPrefab;
 
     private List<NPCQueue> queueMembers = new List<NPCQueue>();
@@ -37,7 +39,7 @@ public class QueueManager : MonoBehaviour
             }
             else
             {
-                npc = Instantiate(npcPrefab);
+                npc = GetRandomNPC();
             }
 
             NPCQueue npcQueue = npc.GetComponent<NPCQueue>();
@@ -46,6 +48,18 @@ public class QueueManager : MonoBehaviour
 
             queueMembers.Add(npcQueue);
         }
+    }
+
+    GameObject GetRandomNPC()
+    {
+        if (npcPrefabs == null || npcPrefabs.Count == 0)
+        {
+            Debug.LogWarning("No NPC prefabs assigned!");
+            return null;
+        }
+
+        int index = Random.Range(0, npcPrefabs.Count);
+        return Instantiate(npcPrefabs[index]);
     }
 
     void AssignInitialPositions()
