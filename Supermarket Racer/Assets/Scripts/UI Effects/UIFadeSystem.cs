@@ -10,6 +10,9 @@ public class UIFadeSystem : MonoBehaviour
     [SerializeField] private CanvasGroup blackCanvasGroup;
     [SerializeField] private CanvasGroup whiteCanvasGroup;
 
+    [Header("Startup Overlay")]
+    [SerializeField] private GameObject startupOverlayPanel;
+
     [Header("Fade Settings")]
     [SerializeField] private float defaultFadeDuration = 1f;
 
@@ -37,6 +40,17 @@ public class UIFadeSystem : MonoBehaviour
 
         canvasGroup.alpha = 1f;
         panelObject.SetActive(false);
+    }
+
+    public void DisableStartupOverlay()
+    {
+        if (startupOverlayPanel == null)
+        {
+            Debug.LogWarning("[UIFadeSystem] startupOverlayPanel is not assigned.");
+            return;
+        }
+
+        startupOverlayPanel.SetActive(false);
     }
 
     public void FadeToBlack()
@@ -79,13 +93,6 @@ public class UIFadeSystem : MonoBehaviour
         StartNewFade(FadeFrom(whitePanelObject, whiteCanvasGroup, duration, "white"));
     }
 
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.F))
-        {
-            FadeToBlack();
-        }
-    }
     private void StartNewFade(IEnumerator fadeCoroutine)
     {
         if (currentFadeCoroutine != null)
@@ -110,7 +117,7 @@ public class UIFadeSystem : MonoBehaviour
 
         while (timer < duration)
         {
-            timer += Time.deltaTime;
+            timer += Time.unscaledDeltaTime;
             float t = timer / duration;
             canvasGroup.alpha = Mathf.Lerp(0f, 1f, t);
             yield return null;
@@ -139,7 +146,7 @@ public class UIFadeSystem : MonoBehaviour
 
         while (timer < duration)
         {
-            timer += Time.deltaTime;
+            timer += Time.unscaledDeltaTime;
             float t = timer / duration;
             canvasGroup.alpha = Mathf.Lerp(1f, 0f, t);
             yield return null;

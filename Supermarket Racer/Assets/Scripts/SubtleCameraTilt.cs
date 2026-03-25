@@ -4,40 +4,37 @@ using UnityEngine.InputSystem;
 public class SubtleCameraTilt : MonoBehaviour
 {
     [Header("Tilt Settings")]
-    public float maxTiltAngle = 3f;      // how far it tilts (degrees)
-    public float smoothSpeed = 5f;       // how smooth it moves
+    public float maxTiltAngle = 3f;
+    public float smoothSpeed = 5f;
 
     private Quaternion originalRotation;
 
-    void Start()
+    private void Start()
     {
         originalRotation = transform.rotation;
     }
 
-    void Update()
+    private void Update()
     {
-        if (Mouse.current == null) return;
+        if (Mouse.current == null)
+            return;
 
         Vector2 mousePos = Mouse.current.position.ReadValue();
 
-        // Convert to -1 to 1 range
         float x = (mousePos.x / Screen.width) * 2f - 1f;
         float y = (mousePos.y / Screen.height) * 2f - 1f;
 
-        // Invert Y so it feels natural
         y = -y;
 
-        // Calculate rotation
         float tiltX = y * maxTiltAngle;
         float tiltY = x * maxTiltAngle;
 
-        Quaternion targetRotation = originalRotation *
-            Quaternion.Euler(tiltX, tiltY, 0);
+        Quaternion targetRotation = originalRotation * Quaternion.Euler(tiltX, tiltY, 0f);
 
         transform.rotation = Quaternion.Lerp(
             transform.rotation,
             targetRotation,
-            Time.deltaTime * smoothSpeed
+            Time.unscaledDeltaTime * smoothSpeed
         );
     }
 }

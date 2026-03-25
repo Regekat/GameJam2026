@@ -1,11 +1,5 @@
+using System.Collections;
 using UnityEngine;
-
-
-/// <summary>
-/// This script is meant to handle game states: win, loss, playing, paused. All of these functions
-/// should eventually pass through here, and this script should be called whenever any of these
-/// game states need to be changed or set.
-/// </summary>
 
 public class GameStateManager : MonoBehaviour
 {
@@ -13,6 +7,17 @@ public class GameStateManager : MonoBehaviour
 
     [SerializeField] private UIFadeSystem fadeSystem;
     [SerializeField] private UIMessageQueue messageQueue;
+    [SerializeField] private PauseManager pauseManager;
+
+    [Header("End Screen Buttons")]
+    [SerializeField] private GameObject restartButtonObject;
+    [SerializeField] private GameObject mainMenuButtonObject;
+
+    [Header("Debug Testing")]
+    [SerializeField] private bool enableDebugStateTesting = true;
+
+    [Header("Opening Countdown")]
+    [SerializeField] private bool runOpeningCountdownOnStart = true;
 
     public enum GameState
     {
@@ -37,6 +42,96 @@ public class GameStateManager : MonoBehaviour
         }
 
         Instance = this;
+
+        SetEndButtonsActive(false);
+        LockGameplayCursor();
+    }
+
+    private void OnEnable()
+    {
+        if (messageQueue != null)
+        {
+            messageQueue.OnQueueFinished += HandleMessageQueueFinished;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (messageQueue != null)
+        {
+            messageQueue.OnQueueFinished -= HandleMessageQueueFinished;
+        }
+    }
+
+    private void Start()
+    {
+        SetEndButtonsActive(false);
+
+        if (runOpeningCountdownOnStart)
+        {
+            StartCoroutine(OpeningCountdownRoutine());
+        }
+    }
+
+    private void Update()
+    {
+        HandleDebugStateTesting();
+    }
+
+    private IEnumerator OpeningCountdownRoutine()
+    {
+        if (pauseManager == null)
+        {
+            Debug.LogWarning("[GameStateManager] pauseManager is not assigned.");
+            yield break;
+        }
+
+        if (messageQueue == null)
+        {
+            Debug.LogWarning("[GameStateManager] messageQueue is not assigned.");
+            yield break;
+        }
+
+        if (fadeSystem == null)
+        {
+            Debug.LogWarning("[GameStateManager] fadeSystem is not assigned.");
+            yield break;
+        }
+
+        pauseManager.PauseGame();
+        messageQueue.PlayCountdown();
+
+        while (messageQueue.IsProcessingQueue)
+        {
+            yield return null;
+        }
+
+        fadeSystem.DisableStartupOverlay();
+        pauseManager.UnpauseGame();
+    }
+
+    private void HandleDebugStateTesting()
+    {
+        if (!enableDebugStateTesting)
+            return;
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Debug.Log("[GameStateManager] Debug trigger: WIN");
+            TriggerWin();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Debug.Log("[GameStateManager] Debug trigger: LOSS");
+            TriggerLoss();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            Debug.Log("[GameStateManager] Debug trigger: RESET TO PLAYING");
+            ResetStateToPlaying();
+        }
     }
 
     public void TriggerWin()
@@ -46,7 +141,7 @@ public class GameStateManager : MonoBehaviour
 
         if (currentState == GameState.Lost)
         {
-            Debug.Log("Win attempt ignored because the game is already lost.");
+            Debug.Log("[GameStateManager] Win ignored because game is already lost.");
             return;
         }
 
@@ -63,7 +158,7 @@ public class GameStateManager : MonoBehaviour
 
         if (currentState == GameState.Won)
         {
-            Debug.Log("Loss attempt ignored because the player already won.");
+            Debug.Log("[GameStateManager] Loss ignored because game is already won.");
             return;
         }
 
@@ -73,18 +168,110 @@ public class GameStateManager : MonoBehaviour
         HandleLoss();
     }
 
+    public void ResetStateToPlaying()
+    {
+        currentState = GameState.Playing;
+        SetEndButtonsActive(false);
+        LockGameplayCursor();
+        Debug.Log("[GameStateManager] State reset to PLAYING");
+    }
+
+    public void ResetGameState()
+    {
+        currentState = GameState.Playing;
+        SetEndButtonsActive(false);
+        LockGameplayCursor();
+
+        if (pauseManager != null)
+        {
+            pauseManager.UnpauseGame();
+        }
+
+        Debug.Log("[GameStateManager] Reset to Playing.");
+    }
+
     private void HandleWin()
     {
-        //Do nothing for now. Eventually, show victory UI, disable controls
-        fadeSystem.FadeToWhite();
-        messageQueue.PlayCheckedOut(Color.black);
+        SetEndButtonsActive(false);
 
+        if (fadeSystem != null)
+        {
+            fadeSystem.FadeToWhite();
+        }
+        else
+        {
+            Debug.LogWarning("[GameStateManager] fadeSystem is not assigned.");
+        }
+
+        if (messageQueue != null)
+        {
+            messageQueue.PlayCheckedOut(Color.black);
+        }
+        else
+        {
+            Debug.LogWarning("[GameStateManager] messageQueue is not assigned.");
+        }
     }
 
     private void HandleLoss()
     {
-        //Do nothing for now. Eventually, show game over UI, disable controls
-        fadeSystem.FadeToBlack();
-        messageQueue.PlayGameOver(Color.red);
+        SetEndButtonsActive(false);
+
+        if (fadeSystem != null)
+        {
+            fadeSystem.FadeToBlack();
+        }
+        else
+        {
+            Debug.LogWarning("[GameStateManager] fadeSystem is not assigned.");
+        }
+
+        if (messageQueue != null)
+        {
+            messageQueue.PlayGameOver(Color.red);
+        }
+        else
+        {
+            Debug.LogWarning("[GameStateManager] messageQueue is not assigned.");
+        }
+    }
+
+    private void HandleMessageQueueFinished()
+    {
+        if (currentState == GameState.Won || currentState == GameState.Lost)
+        {
+            ShowEndScreenButtons();
+        }
+    }
+
+    private void ShowEndScreenButtons()
+    {
+        UnlockMenuCursor();
+        SetEndButtonsActive(true);
+    }
+
+    private void SetEndButtonsActive(bool active)
+    {
+        if (restartButtonObject != null)
+        {
+            restartButtonObject.SetActive(active);
+        }
+
+        if (mainMenuButtonObject != null)
+        {
+            mainMenuButtonObject.SetActive(active);
+        }
+    }
+
+    private void UnlockMenuCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    private void LockGameplayCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }

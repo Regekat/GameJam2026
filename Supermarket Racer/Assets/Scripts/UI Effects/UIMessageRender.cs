@@ -44,7 +44,6 @@ public class UIMessageRender : MonoBehaviour
         targetText.text = "";
         targetText.maxVisibleCharacters = 0;
         canvasGroup.alpha = 0f;
-        gameObject.SetActive(false);
     }
 
     public void PlayMessage(UIMessageData messageData)
@@ -76,14 +75,12 @@ public class UIMessageRender : MonoBehaviour
         targetText.text = "";
         targetText.maxVisibleCharacters = 0;
         canvasGroup.alpha = 0f;
-        gameObject.SetActive(false);
     }
 
     private IEnumerator PlayMessageRoutine(UIMessageData messageData)
     {
         isPlaying = true;
         skipRequested = false;
-        gameObject.SetActive(true);
 
         targetText.color = messageData.textColor;
         targetText.text = messageData.message;
@@ -99,6 +96,11 @@ public class UIMessageRender : MonoBehaviour
         else
         {
             canvasGroup.alpha = 1f;
+        }
+
+        if (!skipRequested && messageData.startDelay > 0f)
+        {
+            yield return new WaitForSecondsRealtime(messageData.startDelay);
         }
 
         if (messageData.useTypewriter)
@@ -118,7 +120,7 @@ public class UIMessageRender : MonoBehaviour
                     audioSource.PlayOneShot(messageData.letterSound, messageData.letterSoundVolume);
                 }
 
-                yield return new WaitForSeconds(messageData.characterDelay);
+                yield return new WaitForSecondsRealtime(messageData.characterDelay);
             }
         }
         else
@@ -128,7 +130,17 @@ public class UIMessageRender : MonoBehaviour
 
         if (!skipRequested && messageData.holdDuration > 0f)
         {
-            yield return new WaitForSeconds(messageData.holdDuration);
+            yield return new WaitForSecondsRealtime(messageData.holdDuration);
+        }
+
+        if (messageData.persistAfterDisplay)
+        {
+            canvasGroup.alpha = 1f;
+            targetText.maxVisibleCharacters = totalVisibleCharacters;
+
+            isPlaying = false;
+            currentRoutine = null;
+            yield break;
         }
 
         if (messageData.fadeOutDuration > 0f)
@@ -142,7 +154,6 @@ public class UIMessageRender : MonoBehaviour
 
         targetText.text = "";
         targetText.maxVisibleCharacters = 0;
-        gameObject.SetActive(false);
 
         isPlaying = false;
         currentRoutine = null;
@@ -155,7 +166,7 @@ public class UIMessageRender : MonoBehaviour
 
         while (timer < duration)
         {
-            timer += Time.deltaTime;
+            timer += Time.unscaledDeltaTime;
             float t = Mathf.Clamp01(timer / duration);
             canvasGroup.alpha = Mathf.Lerp(from, to, t);
             yield return null;
@@ -171,12 +182,14 @@ public class UIMessageRender : MonoBehaviour
             message = message,
             textColor = color,
             useTypewriter = true,
+            startDelay = 0f,
             characterDelay = defaultCharacterDelay,
             fadeInDuration = defaultFadeInDuration,
             holdDuration = 1f,
             fadeOutDuration = defaultFadeOutDuration,
             letterSound = null,
-            letterSoundVolume = 1f
+            letterSoundVolume = 1f,
+            persistAfterDisplay = false
         };
 
         return data;
@@ -192,6 +205,7 @@ public class UIMessageData
     public Color textColor = Color.white;
 
     public bool useTypewriter = true;
+    public float startDelay = 0f;
     public float characterDelay = 0.05f;
 
     public float fadeInDuration = 0.25f;
@@ -200,4 +214,6 @@ public class UIMessageData
 
     public AudioClip letterSound;
     [Range(0f, 1f)] public float letterSoundVolume = 1f;
+
+    public bool persistAfterDisplay = false;
 }

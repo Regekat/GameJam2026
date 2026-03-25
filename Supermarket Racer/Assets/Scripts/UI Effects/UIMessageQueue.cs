@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,8 @@ public class UIMessageQueue : MonoBehaviour
     private bool isProcessingQueue;
 
     public bool IsProcessingQueue => isProcessingQueue;
+
+    public event Action OnQueueFinished;
 
     private void Awake()
     {
@@ -102,19 +105,25 @@ public class UIMessageQueue : MonoBehaviour
 
         isProcessingQueue = false;
         queueRoutine = null;
+
+        OnQueueFinished?.Invoke();
     }
 
     public void PlayCheckedOut(Color colour)
     {
         UIMessageData message = messageRender.CreateDefaultMessage("CHECKED OUT!", colour);
+        message.startDelay = 2f;
+        message.persistAfterDisplay = true;
         EnqueueMessage(message);
     }
 
     public void PlayGameOver(Color colour)
     {
-        UIMessageData message = messageRender.CreateDefaultMessage("Game Over", colour);
+        UIMessageData message = messageRender.CreateDefaultMessage("GAME OVER", colour);
+        message.startDelay = 2f;
         message.characterDelay = 0.08f;
         message.holdDuration = 1.5f;
+        message.persistAfterDisplay = true;
         EnqueueMessage(message);
     }
 
@@ -135,7 +144,7 @@ public class UIMessageQueue : MonoBehaviour
         one.holdDuration = 0.6f;
         one.letterSound = tickSound;
 
-        UIMessageData go = messageRender.CreateDefaultMessage("GO!", Color.green);
+        UIMessageData go = messageRender.CreateDefaultMessage("SHOP", Color.green);
         go.characterDelay = 0.04f;
         go.holdDuration = 0.8f;
         go.letterSound = tickSound;
