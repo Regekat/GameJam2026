@@ -4,47 +4,76 @@ using System.Collections;
 public class NPCQueue : MonoBehaviour
 {
     public float moveSpeed = 2f;
-
+    public float rotateSpeed = 5f;
     public bool isMother;
 
-    public void MoveToPosition(Transform targetPosition)
+    public void MoveToPosition(Transform marker, bool isFrontOfLine = false)
     {
         StopAllCoroutines();
-        StartCoroutine(MoveRoutine(targetPosition));
+        StartCoroutine(MoveRoutine(marker, isFrontOfLine));
     }
 
-    IEnumerator MoveRoutine(Transform target)
+    IEnumerator MoveRoutine(Transform marker, bool isFrontOfLine)
     {
-        while (Vector3.Distance(transform.position, target.position) > 0.05f)
+        // Gradually rotate to match marker's forward while walking
+        Quaternion walkRotation = marker.rotation;
+        while (Vector3.Distance(transform.position, marker.position) > 0.05f)
         {
             transform.position = Vector3.MoveTowards(
                 transform.position,
-                target.position,
+                marker.position,
                 moveSpeed * Time.deltaTime
             );
-
+            transform.rotation = Quaternion.Slerp(
+                transform.rotation,
+                walkRotation,
+                rotateSpeed * Time.deltaTime
+            );
             yield return null;
+        }
+
+        transform.position = marker.position;
+        transform.rotation = walkRotation;
+
+        // Only after arriving at front of line, gradually rotate to face cashier
+        if (isFrontOfLine)
+        {
+            yield return StartCoroutine(GradualRotate(marker.rotation));
         }
     }
 
-    public void LeaveQueue()
+    IEnumerator GradualRotate(Quaternion targetRotation)
     {
-        // walk away
-        StartCoroutine(WalkOff());
+        while (Quaternion.Angle(transform.rotation, targetRotation) > 0.5f)
+        {
+            transform.rotation = Quaternion.Slerp(
+                transform.rotation,
+                targetRotation,
+                rotateSpeed * Time.deltaTime
+            );
+            yield return null;
+        }
+        transform.rotation = targetRotation;
     }
 
-    IEnumerator WalkOff()
+    public void LeaveQueue(Transform leaveMarker)
     {
-        Vector3 exitPoint = transform.position + Vector3.right * 5f;
+        StopAllCoroutines();
+        StartCoroutine(WalkOff(leaveMarker));
+    }
 
-        while (Vector3.Distance(transform.position, exitPoint) > 0.05f)
+    IEnumerator WalkOff(Transform leaveMarker)
+    {
+        // Gradually rotate to face leave marker's forward before walking
+        yield return StartCoroutine(GradualRotate(leaveMarker.rotation));
+
+        while (Vector3.Distance(transform.position, leaveMarker.position) > 0.05f)
         {
             transform.position = Vector3.MoveTowards(
                 transform.position,
-                exitPoint,
+                leaveMarker.position,
                 moveSpeed * Time.deltaTime
             );
-
             yield return null;
         }
 

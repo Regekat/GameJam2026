@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1413706749742919931
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1863743204079654560, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: m_Name
+      value: Interactable_RedApple
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697386463288814449, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697386463288814449, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697386463288814449, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697386463288814449, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697386463288814449, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697386463288814449, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697386463288814449, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697386463288814449, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697386463288814449, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697386463288814449, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6084120883531148368, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 6788383922943872000, guid: 65228179a16c2fc4a9c05b84108669dd, type: 3}
+    - target: {fileID: 7250009022478383927, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: m_Height
+      value: 0.31731176
+      objectReference: {fileID: 0}
+    - target: {fileID: 7250009022478383927, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: m_Radius
+      value: 0.15865588
+      objectReference: {fileID: 0}
+    - target: {fileID: 7250009022478383927, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7250009022478383927, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: m_Center.y
+      value: -0.03999725
+      objectReference: {fileID: 0}
+    - target: {fileID: 7251341834839755346, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7462377480948097595, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: itemID
+      value: Red Apple
+      objectReference: {fileID: 0}
+    - target: {fileID: 8025372852410519803, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 78af10d5a585f48448b2a90aace94c9a, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d6549df2819527c41856275889d062fd, type: 3}

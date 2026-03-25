@@ -9,33 +9,21 @@ public class PlayerPickUpDrop : MonoBehaviour
 
     private ObjectGrabbable currentGrabbable;
     private Outline currentOutline;
+    private ItemUI currentItemUI;
 
     private void Update()
     {
         HandleHighlight();
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (currentGrabbable == null)
-            {
-                TryGrab();
-            }
-            else
-            {
-                currentGrabbable.Drop();
-                currentGrabbable = null;
-            }
-        }
+        HandleGrabInput();
     }
 
     void HandleHighlight()
     {
-        // If holding something, remove highlight
+        // If holding something, remove highlight + UI
         if (currentGrabbable != null)
         {
-            if (currentOutline != null)
-                currentOutline.enabled = false;
-
+            DisableCurrentOutline();
+            DisableCurrentUI();
             return;
         }
 
@@ -47,16 +35,24 @@ public class PlayerPickUpDrop : MonoBehaviour
         {
             if (hit.transform.TryGetComponent(out ObjectGrabbable grabbable))
             {
+                // --- OUTLINE ---
                 Outline outline = hit.transform.GetComponent<Outline>();
 
-                if (outline != null)
+                if (outline != null && currentOutline != outline)
                 {
-                    if (currentOutline != outline)
-                    {
-                        DisableCurrentOutline();
-                        currentOutline = outline;
-                        currentOutline.enabled = true;
-                    }
+                    DisableCurrentOutline();
+                    currentOutline = outline;
+                    currentOutline.enabled = true;
+                }
+
+                // --- UI ---
+                ItemUI itemUI = hit.transform.GetComponent<ItemUI>();
+
+                if (itemUI != null && currentItemUI != itemUI)
+                {
+                    DisableCurrentUI();
+                    currentItemUI = itemUI;
+                    currentItemUI.Show();
                 }
 
                 return;
@@ -64,6 +60,29 @@ public class PlayerPickUpDrop : MonoBehaviour
         }
 
         DisableCurrentOutline();
+        DisableCurrentUI();
+    }
+
+    void HandleGrabInput()
+    {
+        // HOLD to grab
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (currentGrabbable == null)
+            {
+                TryGrab();
+            }
+        }
+
+        // RELEASE to drop
+        if (Input.GetMouseButtonUp(0))
+        {
+            if (currentGrabbable != null)
+            {
+                currentGrabbable.Drop();
+                currentGrabbable = null;
+            }
+        }
     }
 
     void DisableCurrentOutline()
@@ -72,6 +91,15 @@ public class PlayerPickUpDrop : MonoBehaviour
         {
             currentOutline.enabled = false;
             currentOutline = null;
+        }
+    }
+
+    void DisableCurrentUI()
+    {
+        if (currentItemUI != null)
+        {
+            currentItemUI.Hide();
+            currentItemUI = null;
         }
     }
 

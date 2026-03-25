@@ -143,7 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GroceryList
   groceryPaper: {fileID: 3981107648855478261}
   guideText: {fileID: 951398021180354881}
-  listShownPosition: {x: 335, y: -160}
+  listShownPosition: {x: 335, y: -200}
   listHiddenPosition: {x: 335, y: -885}
   listStartsShown: 0
 --- !u!1 &951398021180354881
