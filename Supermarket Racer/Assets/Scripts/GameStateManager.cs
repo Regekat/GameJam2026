@@ -10,6 +10,7 @@ using UnityEngine;
 public class GameStateManager : MonoBehaviour
 {
     public static GameStateManager Instance { get; private set; }
+    [SerializeField] private UIFadeSystem fadeSystem;
 
     public enum GameState
     {
@@ -73,10 +74,13 @@ public class GameStateManager : MonoBehaviour
     private void HandleWin()
     {
         //Do nothing for now. Eventually, show victory UI, disable controls
+        fadeSystem.FadeToWhite();
+
     }
 
     private void HandleLoss()
     {
         //Do nothing for now. Eventually, show game over UI, disable controls
+        fadeSystem.FadeToBlack();
     }
 }
