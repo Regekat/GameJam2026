@@ -549,13 +549,13 @@ MonoBehaviour:
     m_Value: 1
   ditherThreshold:
     m_OverrideState: 1
-    m_Value: 3.53
+    m_Value: 3.5
   ditherStrength:
     m_OverrideState: 1
     m_Value: 1.37
   ditherScale:
     m_OverrideState: 1
-    m_Value: 4.67
+    m_Value: 3
 --- !u!114 &-655873933954882193
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -848,7 +848,7 @@ MonoBehaviour:
   active: 1
   postExposure:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 5
   contrast:
     m_OverrideState: 1
     m_Value: -9

@@ -1,0 +1,138 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5032225453371245256
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1863743204079654560, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: m_Name
+      value: Interactable_RedWineBottle
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697386463288814449, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697386463288814449, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697386463288814449, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697386463288814449, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697386463288814449, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697386463288814449, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697386463288814449, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697386463288814449, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697386463288814449, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697386463288814449, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6084120883531148368, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 6933939715142762413, guid: 34c81cbbcf1a32945b7acff92ae379b7, type: 3}
+    - target: {fileID: 7250009022478383927, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: m_Height
+      value: 0.7361629
+      objectReference: {fileID: 0}
+    - target: {fileID: 7250009022478383927, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: m_Radius
+      value: 0.14999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 7250009022478383927, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: m_Center.y
+      value: 0.35188723
+      objectReference: {fileID: 0}
+    - target: {fileID: 7462377480948097595, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: itemID
+      value: Red Wine Bottle
+      objectReference: {fileID: 0}
+    - target: {fileID: 8025372852410519803, guid: d6549df2819527c41856275889d062fd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5a98b668df763a74690779ac5aca3f1e, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 450190183842582431, guid: d6549df2819527c41856275889d062fd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1701944004868780547}
+    - targetCorrespondingSourceObject: {fileID: 450190183842582431, guid: d6549df2819527c41856275889d062fd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1771352352608591944}
+  m_SourcePrefab: {fileID: 100100000, guid: d6549df2819527c41856275889d062fd, type: 3}
+--- !u!1 &4893561170470980951 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 450190183842582431, guid: d6549df2819527c41856275889d062fd, type: 3}
+  m_PrefabInstance: {fileID: 5032225453371245256}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &1701944004868780547
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4893561170470980951}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.056470517
+  m_Height: 0.30263925
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.8037338, z: 0}
+--- !u!65 &1771352352608591944
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4893561170470980951}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.18880056, y: 0.045669615, z: 0.2097731}
+  m_Center: {x: 0, y: 0.0066405833, z: 0}

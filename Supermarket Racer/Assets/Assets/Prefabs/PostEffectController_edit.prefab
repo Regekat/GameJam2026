@@ -51,13 +51,13 @@ MonoBehaviour:
   volumeProfile: {fileID: 11400000, guid: 7bbe35cdf5d69e14abbb03eccedaa5bd, type: 2}
   isEnabled: 1
   fogDensity: 0
-  fogDistance: 4.7
+  fogDistance: 0
   fogNear: 0
   fogFar: 81.3
   fogAltScale: 10
   fogThinning: 458
-  noiseScale: 843
-  noiseStrength: 0.029
+  noiseScale: 638
+  noiseStrength: 0
   fogColor: {r: 0, g: 0, b: 0, a: 0}
   ambientColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &2562681748513191840
@@ -92,9 +92,9 @@ MonoBehaviour:
   volumeProfile: {fileID: 11400000, guid: 7bbe35cdf5d69e14abbb03eccedaa5bd, type: 2}
   isEnabled: 1
   patternIndex: 1
-  ditherThreshold: 3.53
+  ditherThreshold: 3.5
   ditherStrength: 1.37
-  ditherScale: 4.67
+  ditherScale: 3
 --- !u!114 &2787895955754309528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,10 +113,10 @@ MonoBehaviour:
   noiseWeight: 0.1
   screenBendX: 10
   screenBendY: 10
-  vignetteAmount: 0.98
-  vignetteSize: 0
+  vignetteAmount: 1
+  vignetteSize: 1.6
   vignetteRounding: 5.26
-  vignetteSmoothing: 0.2
+  vignetteSmoothing: 1.29
   scanLinesDensity: 200
   scanLinesSpeed: -10
   noiseAmount: 250
