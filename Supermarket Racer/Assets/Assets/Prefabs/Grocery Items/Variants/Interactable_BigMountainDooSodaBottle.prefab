@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1863743204079654560, guid: d6549df2819527c41856275889d062fd, type: 3}
       propertyPath: m_Name
-      value: Interactable_MountainDooSodaBottle
+      value: Interactable_BigMountainDooSodaBottle
       objectReference: {fileID: 0}
     - target: {fileID: 3697386463288814449, guid: d6549df2819527c41856275889d062fd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -70,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7462377480948097595, guid: d6549df2819527c41856275889d062fd, type: 3}
       propertyPath: itemID
-      value: Mountain Doo Soda Bottle
+      value: Big Mountain Doo Soda Bottle
       objectReference: {fileID: 0}
     - target: {fileID: 8025372852410519803, guid: d6549df2819527c41856275889d062fd, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
