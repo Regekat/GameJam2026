@@ -25,6 +25,10 @@ PrefabInstance:
       value: NPC_Queue
       objectReference: {fileID: 0}
     - target: {fileID: 7083103105314883557, guid: 5b123ebe22150a44594d0dd7cda4567c, type: 3}
+      propertyPath: rotateSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083103105314883557, guid: 5b123ebe22150a44594d0dd7cda4567c, type: 3}
       propertyPath: cashierDirection.x
       value: 0
       objectReference: {fileID: 0}
@@ -93,5 +97,35 @@ PrefabInstance:
     - {fileID: 4929408812459590267, guid: 5b123ebe22150a44594d0dd7cda4567c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4291601370623050600, guid: 5b123ebe22150a44594d0dd7cda4567c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4550542021535242855}
   m_SourcePrefab: {fileID: 100100000, guid: 5b123ebe22150a44594d0dd7cda4567c, type: 3}
+--- !u!1 &6186185420289809337 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4291601370623050600, guid: 5b123ebe22150a44594d0dd7cda4567c, type: 3}
+  m_PrefabInstance: {fileID: 7950940663237974225}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4550542021535242855
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6186185420289809337}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4baa50284425b9d4f9fbccd46c18d003, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

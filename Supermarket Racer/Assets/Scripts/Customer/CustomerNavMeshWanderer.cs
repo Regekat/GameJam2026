@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
-using Unity.VisualScripting;
 
 public class CustomerNavMeshWanderer : MonoBehaviour
 {
@@ -10,19 +9,19 @@ public class CustomerNavMeshWanderer : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed = 1.2f;
     public float wanderRadius = 10f;
-    public float startDelayMax = 2f;   // stagger offset — each NPC waits a random amount before first path
+    public float startDelayMax = 2f;
 
     [Header("Behaviour Weights")]
     [Range(0f, 1f)]
-    public float shelfBrowseChance = 0.5f; // 50% chance to head to a shelf instead of wandering
+    public float shelfBrowseChance = 0.5f;
 
     [Header("Browsing")]
     public float minBrowseTime = 3f;
     public float maxBrowseTime = 8f;
-    public float browseRotateSpeed = 2f;  // how fast they turn to face the shelf
+    public float browseRotateSpeed = 2f;
 
     [Header("Shelf Spots")]
-    public Transform[] shelfSpots; // assign ShelfSpot transforms in Inspector
+    public Transform[] shelfSpots;
 
     private NavMeshAgent agent;
     private CustomerPhysicsController physicsController;
@@ -30,20 +29,27 @@ public class CustomerNavMeshWanderer : MonoBehaviour
     private CustomerState currentState;
     private Transform targetShelfSpot;
 
-    // Animator parameter hash — avoids string lookups every frame
     private static readonly int SpeedHash = Animator.StringToHash("Speed");
+
+    // Tracks which shelf spots are currently occupied across all NPCs
+    private static readonly System.Collections.Generic.HashSet<Transform> occupiedSpots
+        = new System.Collections.Generic.HashSet<Transform>();
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         physicsController = GetComponent<CustomerPhysicsController>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         agent.speed = moveSpeed;
 
-        // Stagger: each NPC waits a random delay before starting pathfinding
-        // This spreads NavMesh path calculations across multiple frames
         float delay = Random.Range(0f, startDelayMax);
         StartCoroutine(DelayedStart(delay));
+    }
+
+    void OnDestroy()
+    {
+        // Make sure spot is freed if NPC is destroyed mid-browse
+        ReleaseShelfSpot();
     }
 
     IEnumerator DelayedStart(float delay)
@@ -57,7 +63,6 @@ public class CustomerNavMeshWanderer : MonoBehaviour
         if (physicsController != null && physicsController.IsRagdoll) return;
         if (!agent.isActiveAndEnabled) return;
 
-        // Drive the walk animation based on actual movement speed
         if (animator != null)
             animator.SetFloat(SpeedHash, agent.velocity.magnitude);
 
@@ -65,7 +70,6 @@ public class CustomerNavMeshWanderer : MonoBehaviour
         {
             case CustomerState.Wandering:
             case CustomerState.MovingToShelf:
-                // Check if we've arrived
                 if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
                 {
                     if (currentState == CustomerState.MovingToShelf)
@@ -78,11 +82,9 @@ public class CustomerNavMeshWanderer : MonoBehaviour
             case CustomerState.BrowsingShelf:
                 if (targetShelfSpot != null)
                 {
-                    // Use the ShelfSpot's forward direction directly
-                    // instead of calculating direction to its position
-                    Quaternion targetRot = targetShelfSpot.rotation;
                     transform.rotation = Quaternion.Slerp(
-                        transform.rotation, targetRot,
+                        transform.rotation,
+                        targetShelfSpot.rotation,
                         browseRotateSpeed * Time.deltaTime
                     );
                 }
@@ -90,13 +92,54 @@ public class CustomerNavMeshWanderer : MonoBehaviour
         }
     }
 
-    // Randomly pick: wander or go browse a shelf
     void DecideNextAction()
     {
         if (shelfSpots != null && shelfSpots.Length > 0 && Random.value < shelfBrowseChance)
-            StartCoroutine(GoToShelf());
+        {
+            Transform freeSpot = GetFreeShelfSpot();
+
+            if (freeSpot != null)
+                StartCoroutine(GoToShelf(freeSpot));
+            else
+                StartCoroutine(Wander()); // all spots taken, just wander instead
+        }
         else
+        {
             StartCoroutine(Wander());
+        }
+    }
+
+    // Finds a random unclaimed shelf spot, returns null if all are taken
+    Transform GetFreeShelfSpot()
+    {
+        // Build a shuffled list of spots to pick randomly from available ones
+        System.Collections.Generic.List<Transform> available
+            = new System.Collections.Generic.List<Transform>();
+
+        foreach (Transform spot in shelfSpots)
+        {
+            if (!occupiedSpots.Contains(spot))
+                available.Add(spot);
+        }
+
+        if (available.Count == 0) return null;
+
+        return available[Random.Range(0, available.Count)];
+    }
+
+    void ClaimShelfSpot(Transform spot)
+    {
+        targetShelfSpot = spot;
+        occupiedSpots.Add(spot);
+    }
+
+    void ReleaseShelfSpot()
+    {
+        if (targetShelfSpot != null)
+        {
+            occupiedSpots.Remove(targetShelfSpot);
+            targetShelfSpot = null;
+        }
     }
 
     IEnumerator Wander()
@@ -106,7 +149,6 @@ public class CustomerNavMeshWanderer : MonoBehaviour
         Vector3 dest = GetRandomNavMeshPoint();
         agent.SetDestination(dest);
 
-        // Wait until arrived, then pause briefly before deciding again
         yield return new WaitUntil(() =>
             !agent.pathPending && agent.remainingDistance <= agent.stoppingDistance);
 
@@ -116,13 +158,12 @@ public class CustomerNavMeshWanderer : MonoBehaviour
         DecideNextAction();
     }
 
-    IEnumerator GoToShelf()
+    IEnumerator GoToShelf(Transform spot)
     {
         currentState = CustomerState.MovingToShelf;
+        ClaimShelfSpot(spot);
 
-        // Pick a random shelf spot
-        targetShelfSpot = shelfSpots[Random.Range(0, shelfSpots.Length)];
-        agent.SetDestination(targetShelfSpot.position);
+        agent.SetDestination(spot.position);
 
         yield return new WaitUntil(() =>
             !agent.pathPending && agent.remainingDistance <= agent.stoppingDistance);
@@ -133,11 +174,12 @@ public class CustomerNavMeshWanderer : MonoBehaviour
     IEnumerator BrowseShelf()
     {
         currentState = CustomerState.BrowsingShelf;
-        agent.ResetPath(); // stop moving
+        agent.ResetPath();
 
         float browseTime = Random.Range(minBrowseTime, maxBrowseTime);
         yield return new WaitForSeconds(browseTime);
 
+        ReleaseShelfSpot();
         DecideNextAction();
     }
 
@@ -154,10 +196,10 @@ public class CustomerNavMeshWanderer : MonoBehaviour
         return transform.position;
     }
 
-    // Called externally when ragdoll triggers — cleanly exits any running coroutine
     public void OnRagdoll()
     {
         StopAllCoroutines();
+        ReleaseShelfSpot(); // free the spot if they get ragdolled
         currentState = CustomerState.Wandering;
     }
 }

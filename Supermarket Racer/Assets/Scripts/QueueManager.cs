@@ -13,11 +13,15 @@ public class QueueManager : MonoBehaviour
     [Header("Mother")]
     public GameObject motherPrefab;
 
-    [Header("Leave Marker")]
+    [Header("Queue Settings")]
+    public float timeBetweenCustomers = 5f;
+    public float delayBetweenEachStep = 0.4f; // stagger delay between each NPC stepping up
+
+    [Header("Markers")]
     public Transform leaveMarker;
+    public Transform cashierFacingMarker;
 
     private List<NPCQueue> queueMembers = new List<NPCQueue>();
-    public float timeBetweenCustomers = 5f;
 
     void Start()
     {
@@ -55,8 +59,8 @@ public class QueueManager : MonoBehaviour
     {
         for (int i = 0; i < queueMembers.Count; i++)
         {
-            bool isFront = (i == 0);
-            queueMembers[i].MoveToPosition(queuePositions[i], isFront);
+            Transform facingMarker = (i == 0) ? cashierFacingMarker : null;
+            queueMembers[i].MoveToPosition(queuePositions[i], facingMarker);
         }
     }
 
@@ -64,6 +68,10 @@ public class QueueManager : MonoBehaviour
     {
         while (queueMembers.Count > 0)
         {
+            // Wait for front NPC to finish rotating to face cashier
+            yield return new WaitUntil(() => queueMembers[0].HasFinishedCashierRotation);
+
+            // Brief pause at the counter, then leave
             yield return new WaitForSeconds(timeBetweenCustomers);
 
             if (GameStateManager.Instance != null && GameStateManager.Instance.HasGameEnded)
@@ -74,7 +82,7 @@ public class QueueManager : MonoBehaviour
             if (GameStateManager.Instance != null && GameStateManager.Instance.HasGameEnded)
                 yield break;
 
-            ShiftQueueForward();
+            yield return StartCoroutine(StaggeredShift());
         }
     }
 
@@ -95,12 +103,16 @@ public class QueueManager : MonoBehaviour
         front.LeaveQueue(leaveMarker);
     }
 
-    void ShiftQueueForward()
+    // Each NPC steps up one at a time with a small delay between them
+    IEnumerator StaggeredShift()
     {
         for (int i = 0; i < queueMembers.Count; i++)
         {
-            bool isFront = (i == 0);
-            queueMembers[i].MoveToPosition(queuePositions[i], isFront);
+            Transform facingMarker = (i == 0) ? cashierFacingMarker : null;
+            queueMembers[i].MoveToPosition(queuePositions[i], facingMarker);
+
+            yield return new WaitUntil(() => queueMembers[i].HasArrived);
+            yield return new WaitForSeconds(delayBetweenEachStep);
         }
     }
 }

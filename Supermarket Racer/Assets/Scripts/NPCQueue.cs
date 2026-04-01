@@ -7,38 +7,66 @@ public class NPCQueue : MonoBehaviour
     public float rotateSpeed = 5f;
     public bool isMother;
 
-    public void MoveToPosition(Transform marker, bool isFrontOfLine = false)
+
+    // QueueManager reads this to know when to send the next NPC
+    public bool HasArrived { get; private set; } = false;
+    public bool HasFinishedCashierRotation { get; private set; } = false;
+
+    private Animator animator;
+    private bool isMoving = false;
+    private static readonly int SpeedHash = Animator.StringToHash("Speed");
+
+    void Start()
     {
-        StopAllCoroutines();
-        StartCoroutine(MoveRoutine(marker, isFrontOfLine));
+        animator = GetComponentInChildren<Animator>();
     }
 
-    IEnumerator MoveRoutine(Transform marker, bool isFrontOfLine)
+    void Update()
     {
-        // Gradually rotate to match marker's forward while walking
-        Quaternion walkRotation = marker.rotation;
-        while (Vector3.Distance(transform.position, marker.position) > 0.05f)
+        if (animator != null)
+            animator.SetFloat(SpeedHash, isMoving ? moveSpeed : 0f);
+    }
+
+    // walkMarker = the queue position (facing queue direction)
+    // cashierMarker = separate transform facing the cashier, only passed for index 0
+    public void MoveToPosition(Transform walkMarker, Transform cashierMarker = null)
+    {
+        HasArrived = false;
+        HasFinishedCashierRotation = false;
+        StopAllCoroutines();
+        StartCoroutine(MoveRoutine(walkMarker, cashierMarker));
+    }
+
+    IEnumerator MoveRoutine(Transform walkMarker, Transform cashierMarker)
+    {
+        isMoving = true;
+
+        while (Vector3.Distance(transform.position, walkMarker.position) > 0.05f)
         {
             transform.position = Vector3.MoveTowards(
                 transform.position,
-                marker.position,
+                walkMarker.position,
                 moveSpeed * Time.deltaTime
             );
             transform.rotation = Quaternion.Slerp(
                 transform.rotation,
-                walkRotation,
+                walkMarker.rotation,
                 rotateSpeed * Time.deltaTime
             );
             yield return null;
         }
 
-        transform.position = marker.position;
-        transform.rotation = walkRotation;
+        isMoving = false;
+        transform.position = walkMarker.position;
+        transform.rotation = walkMarker.rotation;
 
-        // Only after arriving at front of line, gradually rotate to face cashier
-        if (isFrontOfLine)
+        HasArrived = true;
+
+        if (cashierMarker != null)
         {
-            yield return StartCoroutine(GradualRotate(marker.rotation));
+            yield return StartCoroutine(GradualRotate(cashierMarker.rotation));
+            // Signal that rotation is done so QueueManager can remove immediately
+            HasFinishedCashierRotation = true;
         }
     }
 
@@ -58,14 +86,17 @@ public class NPCQueue : MonoBehaviour
 
     public void LeaveQueue(Transform leaveMarker)
     {
+        HasArrived = false;
         StopAllCoroutines();
         StartCoroutine(WalkOff(leaveMarker));
     }
 
     IEnumerator WalkOff(Transform leaveMarker)
     {
-        // Gradually rotate to face leave marker's forward before walking
+        isMoving = false;
         yield return StartCoroutine(GradualRotate(leaveMarker.rotation));
+
+        isMoving = true;
 
         while (Vector3.Distance(transform.position, leaveMarker.position) > 0.05f)
         {

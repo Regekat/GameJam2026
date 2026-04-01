@@ -31,6 +31,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1594033374031932968}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &696613423682834668
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5785109255321657933}
+  m_Layer: 0
+  m_Name: cashierFacingMarker
+  m_TagString: Untagged
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5785109255321657933
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696613423682834668}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1594033374031932968}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2165920664008266606
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,13 +305,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5700857831994859291}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1594033374031932968}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &5978959440385590020
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,6 +466,7 @@ Transform:
   m_LocalScale: {x: 0.3, y: 0.4596433, z: 0.4596433}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 5785109255321657933}
   - {fileID: 7579706740604115137}
   - {fileID: 4789066820764317689}
   - {fileID: 3232256276979271272}
@@ -478,8 +510,10 @@ MonoBehaviour:
   - {fileID: 6919987357669797271, guid: 369bad820686e654f94c488fb88a287f, type: 3}
   - {fileID: 6919987357669797271, guid: 5b123ebe22150a44594d0dd7cda4567c, type: 3}
   motherPrefab: {fileID: 3182024572359509881, guid: ebe5e53f02d28d4468057b36d12ca82f, type: 3}
+  timeBetweenCustomers: 5
+  delayBetweenEachStep: 0.5
   leaveMarker: {fileID: 8604356848604567416}
-  timeBetweenCustomers: 15
+  cashierFacingMarker: {fileID: 5785109255321657933}
 --- !u!1001 &5161288905576045710
 PrefabInstance:
   m_ObjectHideFlags: 0
