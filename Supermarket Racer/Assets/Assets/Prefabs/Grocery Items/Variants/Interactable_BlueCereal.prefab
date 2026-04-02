@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1863743204079654560, guid: d6549df2819527c41856275889d062fd, type: 3}
       propertyPath: m_Name
-      value: Interactable_CerealBoxBLUE
+      value: Interactable_BlueCereal
       objectReference: {fileID: 0}
     - target: {fileID: 3697386463288814449, guid: d6549df2819527c41856275889d062fd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -78,6 +78,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 1bd0044fbff5c144fb52075d3102cea2, type: 2}
     m_RemovedComponents:
     - {fileID: 7250009022478383927, guid: d6549df2819527c41856275889d062fd, type: 3}
+    - {fileID: 8273939554291069096, guid: d6549df2819527c41856275889d062fd, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
