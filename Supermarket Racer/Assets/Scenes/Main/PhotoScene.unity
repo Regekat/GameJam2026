@@ -10153,10 +10153,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8354104477103318640, guid: 54b36a9a57fe2a84aa40d710ac089be3, type: 3}
-      propertyPath: m_Name
-      value: PostEffectController_edit
-      objectReference: {fileID: 0}
     - target: {fileID: 3971800277487035646, guid: 54b36a9a57fe2a84aa40d710ac089be3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.96164
@@ -10196,6 +10192,10 @@ PrefabInstance:
     - target: {fileID: 3971800277487035646, guid: 54b36a9a57fe2a84aa40d710ac089be3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354104477103318640, guid: 54b36a9a57fe2a84aa40d710ac089be3, type: 3}
+      propertyPath: m_Name
+      value: PostEffectController_edit
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
