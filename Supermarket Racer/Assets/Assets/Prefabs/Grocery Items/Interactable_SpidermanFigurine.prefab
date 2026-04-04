@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3690041257732325313
+--- !u!1001 &4590153931120911108
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,19 +10,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1863743204079654560, guid: d6549df2819527c41856275889d062fd, type: 3}
       propertyPath: m_Name
-      value: Interactable_Bread
+      value: Interactable_SpidermanFigurine
       objectReference: {fileID: 0}
     - target: {fileID: 2027256899069669574, guid: d6549df2819527c41856275889d062fd, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.8
+      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 2027256899069669574, guid: d6549df2819527c41856275889d062fd, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.8
+      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 2027256899069669574, guid: d6549df2819527c41856275889d062fd, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.8
+      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 2027256899069669574, guid: d6549df2819527c41856275889d062fd, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -71,22 +71,71 @@ PrefabInstance:
     - target: {fileID: 6084120883531148368, guid: d6549df2819527c41856275889d062fd, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 4465315455489950968, guid: 2408a1c761600454293bee1713a3a6ad, type: 3}
+      objectReference: {fileID: 4068373912626513877, guid: e7a821653f8a2334596f620b2f6c3b0d, type: 3}
     - target: {fileID: 7462377480948097595, guid: d6549df2819527c41856275889d062fd, type: 3}
       propertyPath: itemID
-      value: Bread
+      value: Spiderman Figurine
       objectReference: {fileID: 0}
     - target: {fileID: 8025372852410519803, guid: d6549df2819527c41856275889d062fd, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: a4ba40be2431b4743955b394f7ae1050, type: 2}
-    - target: {fileID: 8273939554291069096, guid: d6549df2819527c41856275889d062fd, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4465315455489950968, guid: 2408a1c761600454293bee1713a3a6ad, type: 3}
+      objectReference: {fileID: 2100000, guid: 3db5b02f3100d0e43afeb550fd1818e2, type: 2}
     m_RemovedComponents:
-    - {fileID: 7250009022478383927, guid: d6549df2819527c41856275889d062fd, type: 3}
+    - {fileID: 8273939554291069096, guid: d6549df2819527c41856275889d062fd, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 450190183842582431, guid: d6549df2819527c41856275889d062fd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3340691403792608161}
+    - targetCorrespondingSourceObject: {fileID: 450190183842582431, guid: d6549df2819527c41856275889d062fd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3835776605248167579}
   m_SourcePrefab: {fileID: 100100000, guid: d6549df2819527c41856275889d062fd, type: 3}
+--- !u!1 &4146941385676500123 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 450190183842582431, guid: d6549df2819527c41856275889d062fd, type: 3}
+  m_PrefabInstance: {fileID: 4590153931120911108}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &3340691403792608161
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4146941385676500123}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.055560827, y: 0.23530537, z: 0.04945612}
+  m_Center: {x: 0.000000022351742, y: 0.11715703, z: -0.00712679}
+--- !u!65 &3835776605248167579
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4146941385676500123}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.24271072, y: 0.018633455, z: 0.037145216}
+  m_Center: {x: 0.000000024835268, y: 0.18035312, z: -0.013282249}

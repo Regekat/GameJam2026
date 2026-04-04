@@ -127,7 +127,8 @@ MonoBehaviour:
   - Green Apple
   - Watermelon
   - Eggplant
-  - Bread
+  - Red Bread
+  - Yellow Bread
   - Toilet Rolls
   - Cock Cola Cans Pack
   - Chang Beer Cans Pack
@@ -159,6 +160,7 @@ MonoBehaviour:
   - Toy Bear
   - Toy Car
   - Tuna Can
+  - Spiderman Figurine
   numberToPick: 3
   maxQuantityPerItem: 5
   groceryListText: {fileID: 7904959921544443185}
