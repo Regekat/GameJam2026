@@ -10,6 +10,7 @@ public class PlayerPickUpDrop : MonoBehaviour
     private ObjectGrabbable currentGrabbable;
     private Outline currentOutline;
     private ItemUI currentItemUI;
+    private FridgeDoor currentDoor;
 
     private void Update()
     {
@@ -19,25 +20,25 @@ public class PlayerPickUpDrop : MonoBehaviour
 
     void HandleHighlight()
     {
-        // If holding something, remove highlight + UI
         if (currentGrabbable != null)
         {
             DisableCurrentOutline();
             DisableCurrentUI();
+            ClearDoorHighlight();
             return;
         }
 
         if (Physics.Raycast(playerCameraTransform.position,
                             playerCameraTransform.forward,
                             out RaycastHit hit,
-                            pickupDistance,
-                            pickUpLayerMask))
+                            pickupDistance))
         {
+            // Hit a grabbable
             if (hit.transform.TryGetComponent(out ObjectGrabbable grabbable))
             {
-                // --- OUTLINE ---
-                Outline outline = hit.transform.GetComponent<Outline>();
+                ClearDoorHighlight();
 
+                Outline outline = hit.transform.GetComponent<Outline>();
                 if (outline != null && currentOutline != outline)
                 {
                     DisableCurrentOutline();
@@ -45,36 +46,52 @@ public class PlayerPickUpDrop : MonoBehaviour
                     currentOutline.enabled = true;
                 }
 
-                // --- UI ---
                 ItemUI itemUI = hit.transform.GetComponent<ItemUI>();
-
                 if (itemUI != null && currentItemUI != itemUI)
                 {
                     DisableCurrentUI();
                     currentItemUI = itemUI;
                     currentItemUI.Show();
                 }
+                return;
+            }
 
+            // Hit a door
+            if (hit.transform.TryGetComponent(out FridgeDoor door))
+            {
+                if (currentDoor != door)
+                {
+                    ClearDoorHighlight();
+                    currentDoor = door;
+                    currentDoor.SetOutline(true);
+                }
+
+                DisableCurrentOutline();
+                DisableCurrentUI();
                 return;
             }
         }
 
         DisableCurrentOutline();
         DisableCurrentUI();
+        ClearDoorHighlight();
     }
 
     void HandleGrabInput()
     {
-        // HOLD to grab
         if (Input.GetMouseButtonDown(0))
         {
             if (currentGrabbable == null)
             {
+                if (currentDoor != null)
+                {
+                    currentDoor.TryToggle();
+                    return;
+                }
                 TryGrab();
             }
         }
 
-        // RELEASE to drop
         if (Input.GetMouseButtonUp(0))
         {
             if (currentGrabbable != null)
@@ -82,6 +99,15 @@ public class PlayerPickUpDrop : MonoBehaviour
                 currentGrabbable.Drop();
                 currentGrabbable = null;
             }
+        }
+    }
+
+    void ClearDoorHighlight()
+    {
+        if (currentDoor != null)
+        {
+            currentDoor.SetOutline(false);
+            currentDoor = null;
         }
     }
 
@@ -115,7 +141,6 @@ public class PlayerPickUpDrop : MonoBehaviour
             {
                 grabbable.Grab(objectGrabPointTransform);
                 currentGrabbable = grabbable;
-
                 DisableCurrentOutline();
             }
         }

@@ -15,7 +15,7 @@ public class QueueManager : MonoBehaviour
 
     [Header("Queue Settings")]
     public float timeBetweenCustomers = 5f;
-    public float delayBetweenEachStep = 0.4f; // stagger delay between each NPC stepping up
+    public float delayBetweenEachStep = 0.4f;
 
     [Header("Markers")]
     public Transform leaveMarker;
@@ -71,16 +71,21 @@ public class QueueManager : MonoBehaviour
             // Wait for front NPC to finish rotating to face cashier
             yield return new WaitUntil(() => queueMembers[0].HasFinishedCashierRotation);
 
-            // Brief pause at the counter, then leave
+            // This is the actual serve time — how long they stand at the counter
             yield return new WaitForSeconds(timeBetweenCustomers);
 
             if (GameStateManager.Instance != null && GameStateManager.Instance.HasGameEnded)
                 yield break;
 
+            // Store reference before removing from list
+            NPCQueue leaving = queueMembers[0];
             RemoveFrontCustomer();
 
             if (GameStateManager.Instance != null && GameStateManager.Instance.HasGameEnded)
                 yield break;
+
+            // Wait until the leaving NPC has finished turning and started walking away
+            yield return new WaitUntil(() => leaving == null || leaving.HasStartedLeaving);
 
             yield return StartCoroutine(StaggeredShift());
         }
@@ -103,7 +108,6 @@ public class QueueManager : MonoBehaviour
         front.LeaveQueue(leaveMarker);
     }
 
-    // Each NPC steps up one at a time with a small delay between them
     IEnumerator StaggeredShift()
     {
         for (int i = 0; i < queueMembers.Count; i++)

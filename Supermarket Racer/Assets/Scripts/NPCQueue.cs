@@ -7,10 +7,9 @@ public class NPCQueue : MonoBehaviour
     public float rotateSpeed = 5f;
     public bool isMother;
 
-
-    // QueueManager reads this to know when to send the next NPC
     public bool HasArrived { get; private set; } = false;
     public bool HasFinishedCashierRotation { get; private set; } = false;
+    public bool HasStartedLeaving { get; private set; } = false;
 
     private Animator animator;
     private bool isMoving = false;
@@ -27,8 +26,6 @@ public class NPCQueue : MonoBehaviour
             animator.SetFloat(SpeedHash, isMoving ? moveSpeed : 0f);
     }
 
-    // walkMarker = the queue position (facing queue direction)
-    // cashierMarker = separate transform facing the cashier, only passed for index 0
     public void MoveToPosition(Transform walkMarker, Transform cashierMarker = null)
     {
         HasArrived = false;
@@ -59,13 +56,11 @@ public class NPCQueue : MonoBehaviour
         isMoving = false;
         transform.position = walkMarker.position;
         transform.rotation = walkMarker.rotation;
-
         HasArrived = true;
 
         if (cashierMarker != null)
         {
             yield return StartCoroutine(GradualRotate(cashierMarker.rotation));
-            // Signal that rotation is done so QueueManager can remove immediately
             HasFinishedCashierRotation = true;
         }
     }
@@ -87,6 +82,7 @@ public class NPCQueue : MonoBehaviour
     public void LeaveQueue(Transform leaveMarker)
     {
         HasArrived = false;
+        HasStartedLeaving = false;
         StopAllCoroutines();
         StartCoroutine(WalkOff(leaveMarker));
     }
@@ -94,8 +90,12 @@ public class NPCQueue : MonoBehaviour
     IEnumerator WalkOff(Transform leaveMarker)
     {
         isMoving = false;
+
+        // Rotate to face leave marker
         yield return StartCoroutine(GradualRotate(leaveMarker.rotation));
 
+        // Rotation done — signal queue to start shifting
+        HasStartedLeaving = true;
         isMoving = true;
 
         while (Vector3.Distance(transform.position, leaveMarker.position) > 0.05f)

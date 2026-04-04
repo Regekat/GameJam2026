@@ -144,6 +144,21 @@ MonoBehaviour:
   - Ice Cream Chocolate Fudge Brownie
   - Ice Cream Cookie Dough
   - Red Wine Bottle
+  - Apple Juice Carton
+  - Baguette
+  - Beans Can
+  - Cheese
+  - Chips Bag
+  - Croissant
+  - Donut
+  - Frozen Fish
+  - Ketchup Bottle
+  - Magazine
+  - Milk Jug
+  - Soap Bottle
+  - Toy Bear
+  - Toy Car
+  - Tuna Can
   numberToPick: 3
   maxQuantityPerItem: 5
   groceryListText: {fileID: 7904959921544443185}

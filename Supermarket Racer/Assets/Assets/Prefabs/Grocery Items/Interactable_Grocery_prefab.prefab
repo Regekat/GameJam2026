@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 6022288515861302334}
   - component: {fileID: 80721462992769749}
   - component: {fileID: 7462377480948097595}
-  - component: {fileID: 7250009022478383927}
   - component: {fileID: 2999542942414320540}
+  - component: {fileID: 8273939554291069096}
   m_Layer: 0
   m_Name: mesh
   m_TagString: Untagged
@@ -193,8 +193,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GroceryItem
   itemID: 
---- !u!136 &7250009022478383927
-CapsuleCollider:
+--- !u!114 &2999542942414320540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450190183842582431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b41411e78906a6c4c803685742bb1cb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemUI
+  uiObject: {fileID: 99029528109178930}
+--- !u!64 &8273939554291069096
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -211,24 +224,10 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.2974259
-  m_Height: 0.49292588
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2999542942414320540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 450190183842582431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b41411e78906a6c4c803685742bb1cb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemUI
-  uiObject: {fileID: 99029528109178930}
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &1863743204079654560
 GameObject:
   m_ObjectHideFlags: 0
