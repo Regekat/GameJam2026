@@ -1704,9 +1704,6 @@ MonoBehaviour:
   pickUpLayerMask:
     serializedVersion: 2
     m_Bits: 55
-  doorLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
   pickupDistance: 2
 --- !u!1 &3509828348028932693
 GameObject:
@@ -1863,12 +1860,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6346680317042270856}
   - {fileID: 4440230677566518260}
   - {fileID: 925595229372335950}
   - {fileID: 9123610314225328227}
   - {fileID: 6945975334983440615}
   - {fileID: 3477469613438932220}
-  - {fileID: 6346680317042270856}
   - {fileID: 4127251324743589769}
   m_Father: {fileID: 7913722163818418395}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
