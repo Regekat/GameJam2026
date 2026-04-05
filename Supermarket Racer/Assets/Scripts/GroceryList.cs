@@ -48,6 +48,19 @@ public class GroceryList : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             listShown = !listShown;
+
+            if (SoundManager.Instance != null)
+            {
+                if (listShown)
+                {
+                    SoundManager.Instance.PlayGroceryListOpenSound();
+                }
+                else
+                {
+                    SoundManager.Instance.PlayGroceryListCloseSound();
+                }
+            }
+
             ApplyState();
         }
     }

@@ -137,6 +137,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CartCollisionRelay
   cartSoundManager: {fileID: 1855955055}
+--- !u!65 &1412024 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 2035204941915000240, guid: e7195f79da41be14984be8a2803087d6, type: 3}
+  m_PrefabInstance: {fileID: 768807652}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1567940
 GameObject:
   m_ObjectHideFlags: 0
@@ -22426,6 +22431,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CartCollisionRelay
   cartSoundManager: {fileID: 1855955055}
+--- !u!65 &372581558 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 1276901233560223697, guid: e7195f79da41be14984be8a2803087d6, type: 3}
+  m_PrefabInstance: {fileID: 768807652}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &372794349
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44839,6 +44849,9 @@ PrefabInstance:
       insertIndex: 1
       addedObject: {fileID: 1855955054}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4691007943715343771, guid: e7195f79da41be14984be8a2803087d6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1589360753}
     - targetCorrespondingSourceObject: {fileID: 6304320118522721128, guid: e7195f79da41be14984be8a2803087d6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1260200830}
@@ -45376,6 +45389,135 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b518b17d522c8604ca23bf70da29a740, type: 3}
+--- !u!1 &777324098
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 777324100}
+  - component: {fileID: 777324099}
+  m_Layer: 0
+  m_Name: UISFXManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &777324099
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777324098}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &777324100
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777324098}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.28303, y: 1.37887, z: -16.34418}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &777889076 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4557980100529643805, guid: 99e4d4823cd95cb45aed19cd32ae0d38, type: 3}
@@ -56848,6 +56990,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CartCollisionRelay
   cartSoundManager: {fileID: 1855955055}
+--- !u!65 &978417758 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 281329266504828052, guid: e7195f79da41be14984be8a2803087d6, type: 3}
+  m_PrefabInstance: {fileID: 768807652}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &978935193
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62242,6 +62389,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CartCollisionRelay
   cartSoundManager: {fileID: 1855955055}
+--- !u!65 &1099435630 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 2878109908255849669, guid: e7195f79da41be14984be8a2803087d6, type: 3}
+  m_PrefabInstance: {fileID: 768807652}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1100616690
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89650,6 +89802,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CartCollisionRelay
   cartSoundManager: {fileID: 1855955055}
+--- !u!65 &1585751252 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 8550516028335927132, guid: e7195f79da41be14984be8a2803087d6, type: 3}
+  m_PrefabInstance: {fileID: 768807652}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1585835844
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89786,6 +89943,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 285570239699318127, guid: 6a6f6887cfdfbe241ab43457879cc53d, type: 3}
   m_PrefabInstance: {fileID: 1587855612}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1589360751 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4691007943715343771, guid: e7195f79da41be14984be8a2803087d6, type: 3}
+  m_PrefabInstance: {fileID: 768807652}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1589360753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589360751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f04536e9cbcb73447baa2c6d326ea1f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CartCrashSound
+  impactSource: {fileID: 64307342}
+  bangCrashClip: {fileID: 8300000, guid: df6e525222686eb46911dc7e78cfecd8, type: 3}
+  crashVolumeMultiplier: 1.5
+  crashColliders:
+  - {fileID: 2029820832}
+  - {fileID: 372581558}
+  - {fileID: 978417758}
+  - {fileID: 1099435630}
+  - {fileID: 1752226561}
+  - {fileID: 1412024}
+  - {fileID: 1585751252}
+  cooldown: 0.1
+  debugLogs: 1
 --- !u!1001 &1589386008
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -95872,6 +96059,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1681633625}
   - component: {fileID: 1681633624}
+  - component: {fileID: 1681633626}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -95891,18 +96079,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc024ef31b623e34caf6ee1bf924f1ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
-  ambientSource: {fileID: 0}
-  movementLoopSource: {fileID: 0}
-  sfxSource: {fileID: 0}
-  cartMovementSound: {fileID: 0}
-  brakeSound: {fileID: 0}
-  pickItemSound: {fileID: 0}
+  ambientSource: {fileID: 1681633626}
+  sfxSource: {fileID: 777324099}
+  pickItemSound: {fileID: 8300000, guid: e30e88050b5416349979b66d1c017faf, type: 3}
   dropIntoCartSound: {fileID: 0}
   ambientSupermarketSound: {fileID: 8300000, guid: ebe86cf3ab3258545b828ae81a13d1c3, type: 3}
   textSound: {fileID: 0}
   buttonClickSound: {fileID: 8300000, guid: 81def541d347038409bac333fcb402e3, type: 3}
-  ambientVolume: 0.5
-  movementVolume: 0.75
+  groceryListOpenSound: {fileID: 8300000, guid: 09304d942499f3e489f92eefc2eac8b8, type: 3}
+  groceryListCloseSound: {fileID: 8300000, guid: ff55479a6cc91f242ac05791cbb034cf, type: 3}
+  ambientVolume: 0.25
   sfxVolume: 1
 --- !u!4 &1681633625
 Transform:
@@ -95912,13 +96098,110 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1681633623}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.58731, y: 1.27359, z: -1.69665}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.58731, y: 1.27359, z: -1.6966496}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1681633626
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681633623}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.25
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1683394759
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -100615,6 +100898,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CartCollisionRelay
   cartSoundManager: {fileID: 1855955055}
+--- !u!65 &1752226561 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 8715687673555354365, guid: e7195f79da41be14984be8a2803087d6, type: 3}
+  m_PrefabInstance: {fileID: 768807652}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1752514706
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -107007,7 +107295,10 @@ MonoBehaviour:
   impactSource: {fileID: 64307342}
   rollingClip: {fileID: 8300000, guid: 74661adc09b1fbf41875c56e94e74410, type: 3}
   brakeClip: {fileID: 8300000, guid: 3e5f04eef1ae95746b21cf25d2c7c727, type: 3}
-  bumpClip: {fileID: 8300000, guid: df6e525222686eb46911dc7e78cfecd8, type: 3}
+  customerBumpedClip: {fileID: 8300000, guid: 18e7a4ece527f4b479d6c03794f66409, type: 3}
+  rollingVolumeMultiplier: 1
+  brakeVolumeMultiplier: 1
+  customerBumpedVolumeMultiplier: 3
   useRigidbodyVelocity: 1
   minSpeedToPlay: 0.15
   maxExpectedSpeed: 10
@@ -107023,7 +107314,7 @@ MonoBehaviour:
   minSpeedForBrakeSound: 0.5
   brakeCooldown: 0.35
   enableImpactSound: 1
-  impactCooldown: 0.15
+  impactCooldown: 1
 --- !u!1001 &1856009288
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -117688,6 +117979,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CartCollisionRelay
   cartSoundManager: {fileID: 1855955055}
+--- !u!65 &2029820832 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 8704881849625322306, guid: e7195f79da41be14984be8a2803087d6, type: 3}
+  m_PrefabInstance: {fileID: 768807652}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2030958258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -131514,3 +131810,4 @@ SceneRoots:
   - {fileID: 175153331}
   - {fileID: 1903231447}
   - {fileID: 1681633625}
+  - {fileID: 777324100}

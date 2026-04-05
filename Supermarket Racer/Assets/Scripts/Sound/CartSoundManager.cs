@@ -2,6 +2,13 @@ using UnityEngine;
 
 public class CartSoundManager : MonoBehaviour
 {
+    /// <summary>
+    /// Please note that for functionality purposes (I couldn't figure it out)
+    /// The sound of the cart bumping into things and rattling is under "CrashCartSound.cs"
+    /// This is because for some reason the script needs to exist where the cart's rigidbody is
+    /// and not on the CartSoundManager.
+    /// Idk Either.
+    /// </summary>
     [Header("References")]
     [SerializeField] private Rigidbody cartRigidbody;
     [SerializeField] private AudioSource rollingSource;
@@ -12,7 +19,12 @@ public class CartSoundManager : MonoBehaviour
 
     [Header("Optional One-Shots")]
     [SerializeField] private AudioClip brakeClip;
-    [SerializeField] private AudioClip bumpClip;
+    [SerializeField] private AudioClip customerBumpedClip;
+
+    [Header("Volume Multipliers")]
+    [SerializeField] private float rollingVolumeMultiplier = 1f;
+    [SerializeField] private float brakeVolumeMultiplier = 1f;
+    [SerializeField] private float customerBumpedVolumeMultiplier = 1f;
 
     [Header("Speed Detection")]
     [SerializeField] private bool useRigidbodyVelocity = true;
@@ -119,7 +131,7 @@ public class CartSoundManager : MonoBehaviour
             }
 
             float speed01 = Mathf.Clamp01(currentSpeed / Mathf.Max(maxExpectedSpeed, 0.01f));
-            float targetVolume = Mathf.Lerp(minVolume, maxVolume, speed01);
+            float targetVolume = Mathf.Lerp(minVolume, maxVolume, speed01) * rollingVolumeMultiplier;
             float targetPitch = Mathf.Lerp(minPitch, maxPitch, speed01);
 
             rollingSource.volume = Mathf.Lerp(rollingSource.volume, targetVolume, volumeLerpSpeed * Time.deltaTime);
@@ -151,7 +163,7 @@ public class CartSoundManager : MonoBehaviour
         if (currentSpeed < minSpeedForBrakeSound)
             return;
 
-        impactSource.PlayOneShot(brakeClip);
+        impactSource.PlayOneShot(brakeClip, brakeVolumeMultiplier);
         lastBrakeTime = Time.time;
     }
 
@@ -164,7 +176,7 @@ public class CartSoundManager : MonoBehaviour
     {
         if (impactSource != null && brakeClip != null)
         {
-            impactSource.PlayOneShot(brakeClip);
+            impactSource.PlayOneShot(brakeClip, brakeVolumeMultiplier);
             lastBrakeTime = Time.time;
         }
     }
@@ -181,14 +193,14 @@ public class CartSoundManager : MonoBehaviour
 
     public void NotifyCollision()
     {
-        if (!enableImpactSound || bumpClip == null || impactSource == null)
+        if (!enableImpactSound || customerBumpedClip == null || impactSource == null)
             return;
 
         if (Time.time - lastImpactTime < impactCooldown)
             return;
 
         Debug.Log("Crash detected, playing");
-        impactSource.PlayOneShot(bumpClip);
+        impactSource.PlayOneShot(customerBumpedClip, customerBumpedVolumeMultiplier);
         lastImpactTime = Time.time;
     }
 }

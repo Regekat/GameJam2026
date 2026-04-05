@@ -6,21 +6,19 @@ public class SoundManager : MonoBehaviour
 
     [Header("Audio Sources")]
     [SerializeField] private AudioSource ambientSource;
-    [SerializeField] private AudioSource movementLoopSource;
     [SerializeField] private AudioSource sfxSource;
 
     [Header("Sound Clips")]
-    [SerializeField] private AudioClip cartMovementSound;
-    [SerializeField] private AudioClip brakeSound;
     [SerializeField] private AudioClip pickItemSound;
     [SerializeField] private AudioClip dropIntoCartSound;
     [SerializeField] private AudioClip ambientSupermarketSound;
     [SerializeField] private AudioClip textSound;
     [SerializeField] private AudioClip buttonClickSound;
+    [SerializeField] private AudioClip groceryListOpenSound;
+    [SerializeField] private AudioClip groceryListCloseSound;
 
     [Header("Volumes")]
     [SerializeField][Range(0f, 1f)] private float ambientVolume = 0.5f;
-    [SerializeField][Range(0f, 1f)] private float movementVolume = 0.75f;
     [SerializeField][Range(0f, 1f)] private float sfxVolume = 1f;
 
     private void Awake()
@@ -37,16 +35,16 @@ public class SoundManager : MonoBehaviour
         ConfigureSources();
     }
 
+    private void Start()
+    {
+        PlayAmbientSupermarketSound();
+    }
+
     private void ValidateSources()
     {
         if (ambientSource == null)
         {
             Debug.LogError("[SoundManager] Ambient Source is not assigned.");
-        }
-
-        if (movementLoopSource == null)
-        {
-            Debug.LogError("[SoundManager] Movement Loop Source is not assigned.");
         }
 
         if (sfxSource == null)
@@ -64,51 +62,12 @@ public class SoundManager : MonoBehaviour
             ambientSource.volume = ambientVolume;
         }
 
-        if (movementLoopSource != null)
-        {
-            movementLoopSource.loop = true;
-            movementLoopSource.playOnAwake = false;
-            movementLoopSource.volume = movementVolume;
-        }
-
         if (sfxSource != null)
         {
             sfxSource.loop = false;
             sfxSource.playOnAwake = false;
             sfxSource.volume = sfxVolume;
         }
-    }
-
-    public void PlayCartMovementSound()
-    {
-        if (movementLoopSource == null || cartMovementSound == null)
-            return;
-
-        if (movementLoopSource.clip != cartMovementSound)
-        {
-            movementLoopSource.clip = cartMovementSound;
-        }
-
-        if (!movementLoopSource.isPlaying)
-        {
-            movementLoopSource.Play();
-        }
-    }
-
-    public void StopCartMovementSound()
-    {
-        if (movementLoopSource == null)
-            return;
-
-        if (movementLoopSource.isPlaying)
-        {
-            movementLoopSource.Stop();
-        }
-    }
-
-    public void PlayBrakeSound()
-    {
-        PlayOneShot(brakeSound);
     }
 
     public void PlayPickItemSound()
@@ -129,6 +88,16 @@ public class SoundManager : MonoBehaviour
     public void PlayButtonClickSound()
     {
         PlayOneShot(buttonClickSound);
+    }
+
+    public void PlayGroceryListOpenSound()
+    {
+        PlayOneShot(groceryListOpenSound);
+    }
+
+    public void PlayGroceryListCloseSound()
+    {
+        PlayOneShot(groceryListCloseSound);
     }
 
     public void PlayAmbientSupermarketSound()
@@ -165,11 +134,6 @@ public class SoundManager : MonoBehaviour
             ambientSource.Stop();
         }
 
-        if (movementLoopSource != null)
-        {
-            movementLoopSource.Stop();
-        }
-
         if (sfxSource != null)
         {
             sfxSource.Stop();
@@ -183,16 +147,6 @@ public class SoundManager : MonoBehaviour
         if (ambientSource != null)
         {
             ambientSource.volume = ambientVolume;
-        }
-    }
-
-    public void SetMovementVolume(float volume)
-    {
-        movementVolume = Mathf.Clamp01(volume);
-
-        if (movementLoopSource != null)
-        {
-            movementLoopSource.volume = movementVolume;
         }
     }
 
@@ -212,5 +166,18 @@ public class SoundManager : MonoBehaviour
             return;
 
         sfxSource.PlayOneShot(clip, sfxVolume);
+    }
+
+    private void OnValidate()
+    {
+        if (ambientSource != null)
+        {
+            ambientSource.volume = ambientVolume;
+        }
+
+        if (sfxSource != null)
+        {
+            sfxSource.volume = sfxVolume;
+        }
     }
 }
