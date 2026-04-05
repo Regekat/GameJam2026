@@ -98,7 +98,7 @@ public class CutsceneManager : MonoBehaviour
     {
         cutsceneFinished = true;
 
-        // Keep screen black during the swap, then fade out
+        // Keep screen black during the swap
         if (skipFadeCanvasGroup != null)
             skipFadeCanvasGroup.alpha = 1f;
 
@@ -110,6 +110,7 @@ public class CutsceneManager : MonoBehaviour
 
         DisablePlayerControl(false);
 
+        // Always fade out to gameplay, whether skipped or finished naturally
         StartCoroutine(FadeOutAfterSkip());
     }
 

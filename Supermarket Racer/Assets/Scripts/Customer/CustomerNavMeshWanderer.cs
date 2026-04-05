@@ -150,7 +150,11 @@ public class CustomerNavMeshWanderer : MonoBehaviour
         agent.SetDestination(dest);
 
         yield return new WaitUntil(() =>
-            !agent.pathPending && agent.remainingDistance <= agent.stoppingDistance);
+            !agent.isActiveAndEnabled ||
+            (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance));
+
+        if (!agent.isActiveAndEnabled)
+            yield break;
 
         float pause = Random.Range(0.5f, 2f);
         yield return new WaitForSeconds(pause);
@@ -166,7 +170,15 @@ public class CustomerNavMeshWanderer : MonoBehaviour
         agent.SetDestination(spot.position);
 
         yield return new WaitUntil(() =>
-            !agent.pathPending && agent.remainingDistance <= agent.stoppingDistance);
+            !agent.isActiveAndEnabled ||
+            (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance));
+
+        // If agent was disabled mid-travel (ragdoll), bail out cleanly
+        if (!agent.isActiveAndEnabled)
+        {
+            ReleaseShelfSpot();
+            yield break;
+        }
 
         StartCoroutine(BrowseShelf());
     }

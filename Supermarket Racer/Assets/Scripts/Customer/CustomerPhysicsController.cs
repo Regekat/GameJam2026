@@ -47,8 +47,9 @@ public class CustomerPhysicsController : MonoBehaviour
 
         if (agent != null)
         {
+            if (state && agent.isOnNavMesh)
+                agent.ResetPath(); // clear path BEFORE disabling
             agent.enabled = !state;
-            if (state) agent.ResetPath();
         }
     }
 
