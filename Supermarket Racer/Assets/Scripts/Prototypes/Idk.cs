@@ -4,11 +4,12 @@ public class RollingCartBallController : MonoBehaviour
 {
     [Header("References")]
     public Rigidbody physicsBall;
-    public Transform cartVisual;
+    public Transform visualRoot;
 
     [Header("Follow")]
     public float visualHeightOffset = 0.75f;
     public float followLerpSpeed = 20f;
+    public bool snapToBallOnStart = true;
 
     [Header("Movement")]
     public float driveTorque = 25f;
@@ -24,22 +25,14 @@ public class RollingCartBallController : MonoBehaviour
 
     [Header("Ground Check")]
     public float groundCheckDistance = 0.7f;
-    public LayerMask groundMask = ~0;
+    public LayerMask groundMask;
     public bool requireGroundedToDrive = true;
 
     private float moveInput;
     private float turnInput;
     private bool isGrounded;
 
-    private void Reset()
-    {
-        if (physicsBall == null)
-        {
-            Rigidbody rb = GetComponentInChildren<Rigidbody>();
-            if (rb != null)
-                physicsBall = rb;
-        }
-    }
+    private float visualYaw;
 
     private void Awake()
     {
@@ -50,20 +43,37 @@ public class RollingCartBallController : MonoBehaviour
             return;
         }
 
+        if (visualRoot == null)
+        {
+            Debug.LogError("RollingCartBallController: VisualRoot is not assigned.");
+            enabled = false;
+            return;
+        }
+
         physicsBall.interpolation = RigidbodyInterpolation.Interpolate;
         physicsBall.maxAngularVelocity = 100f;
+        physicsBall.linearVelocity = Vector3.zero;
+        physicsBall.angularVelocity = Vector3.zero;
+
+        visualYaw = visualRoot.eulerAngles.y;
+
+        if (snapToBallOnStart)
+        {
+            Vector3 startPos = physicsBall.position + Vector3.up * visualHeightOffset;
+            visualRoot.position = startPos;
+        }
     }
 
     private void Update()
     {
-        moveInput = Input.GetAxisRaw("Vertical");     // W/S
-        turnInput = Input.GetAxisRaw("Horizontal");   // A/D
+        moveInput = Input.GetAxisRaw("Vertical");
+        turnInput = Input.GetAxisRaw("Horizontal");
     }
 
     private void FixedUpdate()
     {
         CheckGrounded();
-        TurnCart();
+        TurnVisual();
         DriveBall();
         DampSidewaysSlip();
         DampIdleSpin();
@@ -76,10 +86,10 @@ public class RollingCartBallController : MonoBehaviour
         isGrounded = Physics.Raycast(origin, Vector3.down, groundCheckDistance, groundMask, QueryTriggerInteraction.Ignore);
     }
 
-    private void TurnCart()
+    private void TurnVisual()
     {
-        float yawAmount = turnInput * turnSpeed * Time.fixedDeltaTime;
-        transform.Rotate(0f, yawAmount, 0f, Space.World);
+        visualYaw += turnInput * turnSpeed * Time.fixedDeltaTime;
+        visualRoot.rotation = Quaternion.Euler(0f, visualYaw, 0f);
     }
 
     private void DriveBall()
@@ -100,12 +110,13 @@ public class RollingCartBallController : MonoBehaviour
         if (torqueScale <= 0.01f)
             return;
 
-        Vector3 moveDirection = transform.forward * Mathf.Sign(moveInput);
-
-        // For a sphere, torque axis must be perpendicular to movement direction.
+        Vector3 moveDirection = visualRoot.forward * Mathf.Sign(moveInput);
         Vector3 torqueAxis = Vector3.Cross(Vector3.up, moveDirection).normalized;
 
-        physicsBall.AddTorque(torqueAxis * (driveTorque * Mathf.Abs(moveInput) * torqueScale), ForceMode.Acceleration);
+        physicsBall.AddTorque(
+            torqueAxis * (driveTorque * Mathf.Abs(moveInput) * torqueScale),
+            ForceMode.Acceleration
+        );
     }
 
     private void DampSidewaysSlip()
@@ -116,8 +127,8 @@ public class RollingCartBallController : MonoBehaviour
         if (flatVelocity.sqrMagnitude < 0.0001f)
             return;
 
-        Vector3 forward = transform.forward;
-        Vector3 right = transform.right;
+        Vector3 forward = visualRoot.forward;
+        Vector3 right = visualRoot.right;
 
         float forwardSpeed = Vector3.Dot(flatVelocity, forward);
         float sidewaysSpeed = Vector3.Dot(flatVelocity, right);
@@ -145,26 +156,10 @@ public class RollingCartBallController : MonoBehaviour
     {
         Vector3 targetPosition = physicsBall.position + Vector3.up * visualHeightOffset;
 
-        transform.position = Vector3.Lerp(
-            transform.position,
+        visualRoot.position = Vector3.Lerp(
+            visualRoot.position,
             targetPosition,
             followLerpSpeed * Time.fixedDeltaTime
         );
-
-        if (cartVisual != null)
-        {
-            cartVisual.position = transform.position;
-            cartVisual.rotation = transform.rotation;
-        }
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        if (physicsBall != null)
-        {
-            Gizmos.color = isGrounded ? Color.green : Color.red;
-            Vector3 origin = physicsBall.worldCenterOfMass;
-            Gizmos.DrawLine(origin, origin + Vector3.down * groundCheckDistance);
-        }
     }
 }
