@@ -58,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: -598715368044205067, guid: 24e96a38764c10145873c029fed45a05, type: 3}
     - target: {fileID: 7462377480948097595, guid: d6549df2819527c41856275889d062fd, type: 3}
       propertyPath: itemID
-      value: Tiger Beer Cans Pack
+      value: Blue Beer Cans
       objectReference: {fileID: 0}
     - target: {fileID: 8025372852410519803, guid: d6549df2819527c41856275889d062fd, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
