@@ -1,11 +1,10 @@
 using UnityEngine;
 
-// Sits on the root GameObject alongside CustomerPhysicsController
-// The root CapsuleCollider is what the cart actually hits during normal movement
 [RequireComponent(typeof(CustomerPhysicsController))]
 public class CustomerRagdollTrigger : MonoBehaviour
 {
     private CustomerPhysicsController physicsController;
+    private CartSoundManager cartSoundManager;
 
     void Awake()
     {
@@ -19,12 +18,19 @@ public class CustomerRagdollTrigger : MonoBehaviour
 
         float impact = collision.relativeVelocity.magnitude;
 
-        Debug.Log($"[Ragdoll] Cart hit customer. Impact: {impact:F2}, Threshold: {physicsController.ragdollForceThreshold}");
+        if (cartSoundManager == null)
+            cartSoundManager = collision.gameObject.GetComponentInParent<CartSoundManager>();
+        if (cartSoundManager == null)
+            cartSoundManager = collision.transform.root.GetComponentInChildren<CartSoundManager>();
 
-        if (impact < physicsController.ragdollForceThreshold) return;
+        if (cartSoundManager != null)
+            cartSoundManager.NotifyCollision();
 
-        Vector3 force = collision.relativeVelocity * 10f; // tweak multiplier as needed
-        Vector3 hitPoint = collision.contacts[0].point;
-        physicsController.TriggerRagdoll(force, hitPoint);
+        if (impact >= physicsController.ragdollForceThreshold)
+        {
+            Vector3 force = collision.relativeVelocity * 10f;
+            Vector3 hitPoint = collision.contacts[0].point;
+            physicsController.TriggerRagdoll(force, hitPoint);
+        }
     }
 }
