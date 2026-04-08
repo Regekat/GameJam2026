@@ -20,8 +20,8 @@ public class CutsceneManager : MonoBehaviour
     [Header("Skip")]
     public KeyCode skipKey = KeyCode.Space;
     public GameObject skipPromptUI;
-    public float holdDuration = 1.5f;       // how long to hold before skip triggers
-    public CanvasGroup skipFadeCanvasGroup;  // a black fullscreen CanvasGroup for the fade
+    public float holdDuration = 1.5f;
+    public CanvasGroup skipFadeCanvasGroup;
 
     private bool cutsceneFinished = false;
     private float holdTimer = 0f;
@@ -128,6 +128,7 @@ public class CutsceneManager : MonoBehaviour
         }
 
         skipFadeCanvasGroup.alpha = 0f;
+        skipFadeCanvasGroup.gameObject.SetActive(false);
     }
 
     void SetActive(GameObject[] objects, bool active)
