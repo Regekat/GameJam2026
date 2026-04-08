@@ -16,6 +16,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip buttonClickSound;
     [SerializeField] private AudioClip groceryListOpenSound;
     [SerializeField] private AudioClip groceryListCloseSound;
+    [SerializeField] private AudioClip fridgeDoorOpenSound;
+    [SerializeField] private AudioClip fridgeDoorCloseSound;
 
     [Header("Volumes")]
     [SerializeField][Range(0f, 1f)] private float ambientVolume = 0.5f;
@@ -98,6 +100,16 @@ public class SoundManager : MonoBehaviour
     public void PlayGroceryListCloseSound()
     {
         PlayOneShot(groceryListCloseSound);
+    }
+
+    public void PlayFridgeDoorOpenSound()
+    {
+        PlayOneShot(fridgeDoorOpenSound);
+    }
+
+    public void PlayFridgeDoorCloseSound()
+    {
+        PlayOneShot(fridgeDoorCloseSound);
     }
 
     public void PlayAmbientSupermarketSound()

@@ -30,11 +30,10 @@ public class CutsceneManager : MonoBehaviour
 
     void Start()
     {
-        // Make sure fade starts fully transparent
         if (skipFadeCanvasGroup != null)
         {
-            skipFadeCanvasGroup.alpha = 0f;
             skipFadeCanvasGroup.gameObject.SetActive(true);
+            skipFadeCanvasGroup.alpha = 0f;
         }
 
         StartCoroutine(PlayCutsceneThenStart());

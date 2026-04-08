@@ -42,6 +42,8 @@ public class FridgeDoor : MonoBehaviour
         if (isOpen) return;
         isOpen = true;
         animator.SetTrigger(OpenHash);
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlayFridgeDoorOpenSound();
     }
 
     public void Close()
@@ -49,6 +51,8 @@ public class FridgeDoor : MonoBehaviour
         if (!isOpen) return;
         isOpen = false;
         animator.SetTrigger(CloseHash);
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlayFridgeDoorCloseSound();
         FridgeManager.Instance.NotifyClosed(this);
     }
 

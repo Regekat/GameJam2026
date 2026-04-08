@@ -853,7 +853,211 @@ MonoBehaviour:
   m_Curves: {fileID: 0}
   m_Parent: {fileID: 11400000}
   m_Children: []
-  m_Clips: []
+  m_Clips:
+  - m_Version: 1
+    m_Start: 8.6
+    m_ClipIn: 8.6
+    m_Asset: {fileID: -2096895601582930946}
+    m_Duration: 14.783333333333333
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -3245277008238725407}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: 3.599999999999998
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: cutscene_opening_VA
+  - m_Version: 1
+    m_Start: 19.783333333333335
+    m_ClipIn: 20.366666666666664
+    m_Asset: {fileID: 611816691835196187}
+    m_Duration: 11.216666666666665
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -3245277008238725407}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 3.599999999999998
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: cutscene_opening_VA
+  - m_Version: 1
+    m_Start: 0.8166666666666667
+    m_ClipIn: 1.2798294623071937
+    m_Asset: {fileID: 6391658318523877138}
+    m_Duration: 3.6850852688464033
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -3245277008238725407}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: cutscene_opening_VA
+  - m_Version: 1
+    m_Start: 4.885085268846403
+    m_ClipIn: 5.048248064486931
+    m_Asset: {fileID: 4426389392543461562}
+    m_Duration: 3.7149147311535966
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -3245277008238725407}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: cutscene_opening_VA
   m_Markers:
     m_Objects: []
   m_TrackProperties:
@@ -872,7 +1076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f3dc945d6cfc4f41bb07462ba4b099d, type: 3}
   m_Name: SubtitleClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
   m_EditorClassIdentifier: Assembly-CSharp::SubtitleClip
-  subtitleText: "\u2026don\u2019t bother coming home."
+  subtitleText: "\u2026don\u2019t bother coming home!"
 --- !u!114 &-2814303034066808494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1009,6 +1213,23 @@ MonoBehaviour:
   m_Name: SubtitleClip(Clone)(Clone)
   m_EditorClassIdentifier: Assembly-CSharp::SubtitleClip
   subtitleText: "Unbelievable. I should\u2019ve gone myself."
+--- !u!114 &-2096895601582930946
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f10dd60657c6004587f237a7e90f8e4, type: 3}
+  m_Name: AudioPlayableAsset
+  m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.AudioPlayableAsset
+  m_Clip: {fileID: 8300000, guid: 98011bab0ef45104c85d2ef133af8673, type: 3}
+  m_Loop: 0
+  m_bufferingTime: 0.1
+  m_ClipProperties:
+    volume: 1
 --- !u!114 &-274560254307727768
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1068,6 +1289,23 @@ MonoBehaviour:
     m_ScenePreview: 1
   m_DurationMode: 0
   m_MarkerTrack: {fileID: 0}
+--- !u!114 &611816691835196187
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f10dd60657c6004587f237a7e90f8e4, type: 3}
+  m_Name: AudioPlayableAsset(Clone)(Clone)
+  m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.AudioPlayableAsset
+  m_Clip: {fileID: 8300000, guid: 98011bab0ef45104c85d2ef133af8673, type: 3}
+  m_Loop: 0
+  m_bufferingTime: 0.1
+  m_ClipProperties:
+    volume: 1
 --- !u!74 &732796233816245865
 AnimationClip:
   m_ObjectHideFlags: 0
@@ -1900,7 +2138,7 @@ MonoBehaviour:
     m_Start: 4.885085268846403
     m_ClipIn: 0
     m_Asset: {fileID: -2354769360897289747}
-    m_Duration: 3.114805189799517
+    m_Duration: 3.481581397820264
     m_TimeScale: 1
     m_ParentTrack: {fileID: 2725170251228950480}
     m_EaseInDuration: 0.2
@@ -1966,16 +2204,16 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: SubtitleClip
   - m_Version: 1
-    m_Start: 7.99989045864592
+    m_Start: 8.366666666666667
     m_ClipIn: 0
     m_Asset: {fileID: -5357539166762421515}
-    m_Duration: 1.2464961289738596
+    m_Duration: 1.2833333333333332
     m_TimeScale: 1
     m_ParentTrack: {fileID: 2725170251228950480}
     m_EaseInDuration: 0.2
     m_EaseOutDuration: 0.2
     m_BlendInDuration: -1
-    m_BlendOutDuration: -1
+    m_BlendOutDuration: 0.40361341238022064
     m_MixInCurve:
       serializedVersion: 2
       m_Curve:
@@ -2043,7 +2281,7 @@ MonoBehaviour:
     m_ParentTrack: {fileID: 2725170251228950480}
     m_EaseInDuration: 0.2
     m_EaseOutDuration: 0.2
-    m_BlendInDuration: -1
+    m_BlendInDuration: 0.40361341238022064
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
@@ -2107,7 +2345,7 @@ MonoBehaviour:
     m_Start: 11.383333333333333
     m_ClipIn: 0
     m_Asset: {fileID: -2370039523368948010}
-    m_Duration: 2.1500000000000004
+    m_Duration: 2.666666666666668
     m_TimeScale: 1
     m_ParentTrack: {fileID: 2725170251228950480}
     m_EaseInDuration: 0.2
@@ -2173,10 +2411,10 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: SubtitleClip
   - m_Version: 1
-    m_Start: 13.533333333333333
+    m_Start: 14.05
     m_ClipIn: 0
     m_Asset: {fileID: 7470577038371064256}
-    m_Duration: 2.1500000000000004
+    m_Duration: 2.232151207327842
     m_TimeScale: 1
     m_ParentTrack: {fileID: 2725170251228950480}
     m_EaseInDuration: 0.2
@@ -2242,10 +2480,10 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: SubtitleClip
   - m_Version: 1
-    m_Start: 15.683333333333334
+    m_Start: 16.282151207327843
     m_ClipIn: 0
     m_Asset: {fileID: 2199807459292744893}
-    m_Duration: 2.8000000000000007
+    m_Duration: 2.869727182202041
     m_TimeScale: 1
     m_ParentTrack: {fileID: 2725170251228950480}
     m_EaseInDuration: 0.2
@@ -2311,10 +2549,10 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: SubtitleClip
   - m_Version: 1
-    m_Start: 18.483333333333334
+    m_Start: 19.151878389529884
     m_ClipIn: 0
     m_Asset: {fileID: -8996341472177104066}
-    m_Duration: 6.533333333333331
+    m_Duration: 5.864788277136782
     m_TimeScale: 1
     m_ParentTrack: {fileID: 2725170251228950480}
     m_EaseInDuration: 0.2
@@ -2452,7 +2690,7 @@ MonoBehaviour:
     m_Start: 27.266666666666666
     m_ClipIn: 0
     m_Asset: {fileID: -3181342085204597529}
-    m_Duration: 1.783333333333335
+    m_Duration: 2.5833333333333357
     m_TimeScale: 1
     m_ParentTrack: {fileID: 2725170251228950480}
     m_EaseInDuration: 0.2
@@ -2846,6 +3084,23 @@ MonoBehaviour:
   m_Loop: 0
   m_Version: 1
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
+--- !u!114 &4426389392543461562
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f10dd60657c6004587f237a7e90f8e4, type: 3}
+  m_Name: AudioPlayableAsset(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.AudioPlayableAsset
+  m_Clip: {fileID: 8300000, guid: 98011bab0ef45104c85d2ef133af8673, type: 3}
+  m_Loop: 0
+  m_bufferingTime: 0.1
+  m_ClipProperties:
+    volume: 1
 --- !u!114 &4976465912557260666
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3009,7 +3264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f3dc945d6cfc4f41bb07462ba4b099d, type: 3}
   m_Name: SubtitleClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
   m_EditorClassIdentifier: Assembly-CSharp::SubtitleClip
-  subtitleText: "\u2026you didn\u2019t get everything."
+  subtitleText: "\u2026you didn\u2019t get everything!"
 --- !u!114 &5525224434251911878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3045,6 +3300,23 @@ MonoBehaviour:
   m_Loop: 0
   m_Version: 1
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
+--- !u!114 &6391658318523877138
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f10dd60657c6004587f237a7e90f8e4, type: 3}
+  m_Name: AudioPlayableAsset(Clone)(Clone)
+  m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.AudioPlayableAsset
+  m_Clip: {fileID: 8300000, guid: 98011bab0ef45104c85d2ef133af8673, type: 3}
+  m_Loop: 0
+  m_bufferingTime: 0.1
+  m_ClipProperties:
+    volume: 1
 --- !u!114 &6658920649727204966
 MonoBehaviour:
   m_ObjectHideFlags: 1
