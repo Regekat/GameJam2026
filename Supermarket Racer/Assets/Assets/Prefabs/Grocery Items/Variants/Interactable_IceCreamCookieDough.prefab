@@ -58,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 1555480074500245675, guid: 391c02a9a4e296c4ba37d88e96cf594a, type: 3}
     - target: {fileID: 7462377480948097595, guid: d6549df2819527c41856275889d062fd, type: 3}
       propertyPath: itemID
-      value: Ice Cream Cookie Dough
+      value: Ice Cream
       objectReference: {fileID: 0}
     - target: {fileID: 8025372852410519803, guid: d6549df2819527c41856275889d062fd, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
