@@ -4112,7 +4112,7 @@ AudioSource:
   m_GameObject: {fileID: 64307339}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7324259588901495292, guid: 1c1ea200608b3f747a6601c2a1393365, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
@@ -50014,6 +50014,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Cart
       objectReference: {fileID: 0}
+    - target: {fileID: 5403031438985465305, guid: e7195f79da41be14984be8a2803087d6, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 7324259588901495292, guid: 1c1ea200608b3f747a6601c2a1393365, type: 2}
     - target: {fileID: 6000539494815971823, guid: e7195f79da41be14984be8a2803087d6, type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 55
@@ -50680,7 +50684,7 @@ AudioSource:
   m_GameObject: {fileID: 777324098}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1817475574736407429, guid: 1c1ea200608b3f747a6601c2a1393365, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
@@ -110620,7 +110624,7 @@ AudioSource:
   m_GameObject: {fileID: 1681633623}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -7805676397879412295, guid: 1c1ea200608b3f747a6601c2a1393365, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -145666,7 +145670,7 @@ AudioSource:
   m_GameObject: {fileID: 578779651555435099}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -5894472095031344220, guid: 1c1ea200608b3f747a6601c2a1393365, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
